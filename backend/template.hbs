@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-{{ theme }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sol</title>
+    <link rel="preload" href="/GT-America-Light.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <script>
+      // placeholder
+      document.documentElement.classList.add('wf-loaded');
+    </script>
+  </head>
+  <body>
+    <main class="app" id="app">
+      <div class="graph">
+        <div class="graph__sun">
+          <time class="graph__current" datetime="{{ now }}">{{ now }}</time>
+        </div>
+        <div class="graph__footer">
+          <time datetime="{{ sunrise }}">{{ sunrise }}</time>
+          <time datetime="{{ sunset }}">{{ sunset }}</time>  
+        </div>
+      </div>
+      <p class="text">{{{ sentence }}}</p>
+      <footer class="app__footer">
+        <p class="muted">{{ city }}, {{ country }}</p>
+        <a class="muted" href="#">Share</a>
+      </footer>
+    </main>
+  </body>
+</html>

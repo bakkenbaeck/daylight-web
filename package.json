@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "^4.14.0",
+    "geo-from-ip": "^1.0.6",
+    "handlebars": "^4.0.6",
+    "mz": "^2.6.0",
+    "suncalc": "^1.7.0"
+  }
+}
