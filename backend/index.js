@@ -13,8 +13,8 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
   const now = new Date();
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  const {city, country, location} = geoip.allData(ip);
-  //const {city, country, location} = geoip.allData('185.55.105.254');
+  //const {city, country, location} = geoip.allData(ip);
+  const {city, country, location} = geoip.allData('185.55.105.254');
   const {theme, sunrise, sunset, minutes} = suntime.get(now, location);
 
   const data = {

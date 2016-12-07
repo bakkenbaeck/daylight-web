@@ -11,33 +11,14 @@ function get(date, location) {
     today: SunCalc.getTimes(date, location.latitude, location.longitude),
     yesterday: SunCalc.getTimes(yesterday, location.latitude, location.longitude) 
   }
-
-  let theme = '';
-  switch(date) {
-    case date >= sun.today.sunrise && date <= sun.today.sunriseEnd:
-      theme = 'sunrise';
-      break;
-    case date >= sun.today.sunriseEnd  && date <= sun.today.sunsetStart:
-      theme = 'daylight';
-      break;
-    case date >= sun.today.sunsetStart && date <= sun.today.sunset:
-      theme = 'sunset';
-      break;
-    case date >= sun.today.night:
-      theme = 'night';
-      break;
-    default:
-      theme = 'twilight';
-      break;
-  }
-
+  
   const sunMinutes = {
     today: (sun.today.sunsetStart - sun.today.sunrise)  / 60000, 
     yesterday: (sun.yesterday.sunsetStart - sun.yesterday.sunrise) / 60000 
   }  
 
   return {
-    theme, 
+    theme: getTheme(date, sun.today), 
     minutes: Math.abs(Math.round(sunMinutes.yesterday - sunMinutes.today)),
     sunrise: formateTime(sun.today.sunrise),
     sunset: formateTime(sun.today.sunsetStart),
@@ -55,6 +36,20 @@ function generateSentence(min) {
   ];
 
   return sentences[Math.floor(Math.random() * sentences.length)].split('{{min}}').join(min);
+}
+
+function getTheme(date, sun) {
+  if (date >= sun.sunrise && date <= sun.sunriseEnd) {
+    return 'sunrise';
+  } else if (date >= sun.sunriseEnd  && date <= sun.sunsetStart) {
+    return 'daylight';
+  } else if (date >= sun.sunsetStart && date <= sun.sunset) {
+    return 'sunset';
+  } else if (date >= sun.night) {
+    return 'night';
+  } else {
+    return 'twilight';
+  }
 }
 
 module.exports = {get, formateTime, generateSentence};
