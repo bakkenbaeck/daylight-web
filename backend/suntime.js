@@ -1,7 +1,7 @@
 const SunCalc = require('suncalc');
 
 const leftPad = (int) => int >= 10 ? int : '0' + int;
-const formateTime = date => `${leftPad(date.getHours())}:${leftPad(date.getMinutes())}`;
+const formateTime = date => `${leftPad(new Date(date).getHours())}:${leftPad(new Date(date).getMinutes())}`;
 
 function get(date, location) {
   let yesterday = new Date();
@@ -20,8 +20,8 @@ function get(date, location) {
   return {
     theme: getTheme(date, sun.today), 
     minutes: Math.abs(Math.round(sunMinutes.yesterday - sunMinutes.today)),
-    sunrise: formateTime(sun.today.sunrise),
-    sunset: formateTime(sun.today.sunsetStart),
+    sunrise: sun.today.sunrise,
+    sunset: sun.today.sunset,
     positive: sunMinutes.yesterday < sunMinutes.today
   }
 }
@@ -52,4 +52,17 @@ function getTheme(date, sun) {
   }
 }
 
-module.exports = {get, formateTime, generateSentence};
+const getSunPosition = (now, start, end) => {
+  if (now > start) { return {x: 0, y: 0} }
+  else if (now < end) { return {x: 100, y: 0} }
+
+  const span = end - start;
+  const current = now - start;
+
+  const x = current / span * 100;
+  const y = Math.sin((Math.PI / 100) * x) * 100
+
+  return {x,y}
+}
+
+module.exports = {get, formateTime, generateSentence, getSunPosition};
