@@ -108,6 +108,7 @@ b {
 }
 
 .graph__current {
+  text-align: center;
   width: 2rem;
   height: 2.5rem;
   position: absolute;
