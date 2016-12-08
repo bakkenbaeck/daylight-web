@@ -110,7 +110,6 @@ b {
 .graph__current {
   width: 2rem;
   height: 2.5rem;
-  margin-left: -1rem;
   position: absolute;
 }
 .graph__current:before {

@@ -53,8 +53,8 @@ function getTheme(date, sun) {
 }
 
 const getSunPosition = (now, start, end) => {
-  if (now > start) { return {x: 0, y: 0} }
-  else if (now < end) { return {x: 100, y: 0} }
+  if (now < start) { return {x: 0, y: 0} }
+  else if (now > end) { return {x: 100, y: 0} }
 
   const span = end - start;
   const current = now - start;
