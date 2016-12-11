@@ -96,7 +96,7 @@ b {
 
 .graph {
   font-size: .75rem;
-  height: 220px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   
@@ -107,12 +107,16 @@ b {
   overflow: hidden;
 }
 
+
 .graph__current {
   text-align: center;
   width: 2rem;
   height: 2.5rem;
   position: absolute;
+  top: 100%;
+  left: 0;
 }
+
 .graph__current:before {
   content: "";
   background-color: currentColor;
@@ -123,6 +127,11 @@ b {
   position: absolute;
   bottom: 0;
   left: 50%;
+}
+
+.graph__current--static {
+  transform: translate(-1rem, 2.5rem);
+  top: auto;
 }
 
 .graph__footer {

@@ -17,7 +17,7 @@
     <main class="app" id="app">
       <div class="graph">
         <div class="graph__sun">
-          <time class="graph__current" datetime="{{ now }}" style="bottom: calc({{sunPosition.y}}% - 2.5rem); left: {{sunPosition.x}}%">{{ now }}</time>
+          <time class="graph__current graph__current--static" style="left: {{sunPosition.x }}%; bottom: {{ sunPosition.y }}%;" datetime="{{ now }}">{{ now }}</time>
         </div>
         <div class="graph__footer">
           <time datetime="{{ sunrise }}">{{ sunrise }}</time>
@@ -30,5 +30,7 @@
         <a class="muted" href="#">Share</a>
       </footer>
     </main>
+
+    <script src="/index.js"></script>
   </body>
 </html>
