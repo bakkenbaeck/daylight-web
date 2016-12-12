@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.TZ = 'Europe/Oslo';
+
 const express = require('express');
 const geoip = require('geo-from-ip');
 const Handlebars = require('handlebars');
