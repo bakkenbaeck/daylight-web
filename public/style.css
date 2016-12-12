@@ -143,14 +143,10 @@ b {
   width: 2rem;
   height: 2.5rem;
   position: absolute;
-  top: 100%;
+  bottom: 0;
   left: 0;
   z-index: 1;
-}
-
-.horizon__sun--static {
   transform: translate(-1rem, 2.5rem);
-  top: auto;
 }
 
 .horizon__line {
