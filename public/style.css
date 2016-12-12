@@ -73,6 +73,21 @@ b {
   opacity: .6;
 }
 
+.sun:before {
+  content: "";
+  background-color: currentColor;
+  border-radius: 100%;
+  width: 1rem;
+  height: 1rem;
+}
+
+.sun--bottom:before {
+  margin-left: -.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+
 .app {
   max-width: 31.25rem;
   margin-left: auto;
@@ -94,51 +109,44 @@ b {
   justify-content: space-between;
 }
 
-.graph {
+
+.horizon {
   font-size: .75rem;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  
+  margin-bottom: 3rem;
 }
-.graph__sun {
-  flex-grow: 1;
-  position: relative;
+
+.horizon__sky {
   overflow: hidden;
 }
 
+.horizon__sky-wrap {
+  height: 200px;
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  position: relative;
+}
 
-.graph__current {
+.horizon__sun {
   text-align: center;
   width: 2rem;
   height: 2.5rem;
   position: absolute;
   top: 100%;
   left: 0;
+  z-index: 1;
 }
 
-.graph__current:before {
-  content: "";
-  background-color: currentColor;
-  border-radius: 100%;
-  width: 1rem;
-  height: 1rem;
-  margin-left: -.5rem;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-}
-
-.graph__current--static {
+.horizon__sun--static {
   transform: translate(-1rem, 2.5rem);
   top: auto;
 }
 
-.graph__footer {
+.horizon__line {
   border-top: 1px solid;
   padding-top: .5rem;
-  padding-bottom: 3rem;
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }

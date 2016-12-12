@@ -58,7 +58,7 @@ const getSunPosition = progress => {
   let x = 0;
   let y = 0;
 
-  if (progress >= 1) { return {x,y} }
+  if (progress > 1) { return {x,y} }
 
   x = 50 + Math.cos(position) * 50;
   y = Math.abs(Math.sin(position) * 100);
