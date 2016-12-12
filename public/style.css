@@ -88,6 +88,8 @@ b {
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sun {
