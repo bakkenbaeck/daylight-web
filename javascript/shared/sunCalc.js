@@ -10,7 +10,7 @@ function getTheme(date, sun) {
     return 'daylight';
   } else if (date >= sun.sunsetStart && date <= sun.sunset) {
     return 'sunset';
-  } else if (date >= sun.night) {
+  } else if (date >= sun.night || date <= sun.nightEnd) {
     return 'night';
   } else {
     return 'twilight';

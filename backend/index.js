@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   const now = new Date();
-  //const now = new Date(2016, 11, 12, 12, 55);
+  //const now = new Date(2016, 11, 13, 9, 0);
   
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   //const {city, country, location} = geoip.allData(ip);
