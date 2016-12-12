@@ -1,9 +1,22 @@
 {
+  "name": "Sol",
+  "version": "1.0.0",
+  "contour": "2.0.0",
+  "scripts": {
+    "webpack": "webpack -d --watch --config ./tasks/webpack.js",
+    "build": "webpack"
+  },
   "dependencies": {
     "express": "^4.14.0",
     "geo-from-ip": "^1.0.6",
     "handlebars": "^4.0.6",
     "mz": "^2.6.0",
     "suncalc": "^1.7.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.9",
+    "babel-preset-es2015": "^6.18.0",
+    "webpack": "^1.14.0"
   }
 }

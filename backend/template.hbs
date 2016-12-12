@@ -14,14 +14,14 @@
     </script>
   </head>
   <body>
-    <main class="app" id="app">
+    <main class="app" id="app" data-latitude="{{location.latitude}}" data-longitude="{{ location.longitude }}" data-sunset="{{ sunset.time }}" data-sunrise="{{ sunrise.time }}" data-city="{{ city }}" data-country="{{ country }}">
       <div class="graph">
         <div class="graph__sun">
           <time class="graph__current graph__current--static" style="left: {{sunPosition.x }}%; bottom: {{ sunPosition.y }}%;" datetime="{{ now }}">{{ now }}</time>
         </div>
         <div class="graph__footer">
-          <time datetime="{{ sunrise }}">{{ sunrise }}</time>
-          <time datetime="{{ sunset }}">{{ sunset }}</time>  
+          <time datetime="{{ sunrise.display }}">{{ sunrise.display }}</time>
+          <time datetime="{{ sunset.display }}">{{ sunset.display }}</time>  
         </div>
       </div>
       <p class="text">{{{ sentence }}}</p>
@@ -30,7 +30,6 @@
         <a class="muted" href="#">Share</a>
       </footer>
     </main>
-
     <script src="/index.js"></script>
   </body>
 </html>

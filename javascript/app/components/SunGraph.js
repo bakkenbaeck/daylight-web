@@ -1,24 +1,17 @@
-const leftPad = (int) => int >= 10 ? int : '0' + int;
-const formateTime = date => `${leftPad(date.getHours())}:${leftPad(date.getMinutes())}`;
-
-const getSunPosition = position => {
-  const progress = (Math.PI + (position * Math.PI));
-  return {
-    x: 50 + Math.cos(progress) * 50,
-    y: Math.sin(progress) * 100,
-  }
-}
-
-const sunrise = new Date(2016, 11, 11, 09, 08);
-const sunset = new Date(2016, 11, 11, 15, 13);
-
+import utils from '../../shared/utils';
+import sunCalc from '../../shared/sunCalc';
 
 class SunGraph {
-  constructor() {
+  constructor(sunrise, sunset) {
+    this.sunrise = sunrise;
+    this.sunset = sunset;
+
     this.graph = document.querySelector('.graph__sun');
     this.sun = document.querySelector('.graph__current');
     const {height, width} = this.graph.getBoundingClientRect();
     this.props = {height, width};
+
+    this.update = this.update.bind(this);
   }
 
   init() {
@@ -32,7 +25,7 @@ class SunGraph {
         setTimeout(() => {
           this.update();
           setInterval(this.update, 60000);
-        }, new Date().getSeconds() * 1000);
+        }, (60 - new Date().getSeconds()) * 1000);
       });
     });
   }
@@ -41,12 +34,11 @@ class SunGraph {
     return new Promise(resolve => {
       const now = new Date();
 
-      if (now >= sunset || now <= sunrise) { return resolve(); }
+      const time = utils.timeFormatter(now);
+      const position = (now - this.sunrise) / (this.sunset - this.sunrise);
 
-      const time = formateTime(now);
-      const position = (now - sunrise) / (sunset - sunrise);
+      let {x,y} = sunCalc.getSunPosition(position);
 
-      let {x,y} = getSunPosition(position);
       x = ((this.props.width / 100) * x);
       y = ((this.props.height / 100) * y);
 
@@ -61,6 +53,4 @@ class SunGraph {
 
 }
 
-
-const graph = new SunGraph();
-graph.init();
+export default SunGraph
