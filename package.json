@@ -4,7 +4,7 @@
   "contour": "2.0.0",
   "scripts": {
     "webpack": "webpack -d --watch --config ./tasks/webpack.js",
-    "build": "webpack"
+    "build": "npm run webpack"
   },
   "dependencies": {
     "express": "^4.14.0",
