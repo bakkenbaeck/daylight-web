@@ -36,7 +36,6 @@ class SunGraph {
 
       const time = utils.timeFormatter(now);
       const position = (now - this.sunrise) / (this.sunset - this.sunrise);
-
       let {x,y} = sunCalc.getSunPosition(position);
 
       x = ((this.props.width / 100) * x);
@@ -45,7 +44,7 @@ class SunGraph {
       requestAnimationFrame(() => {
         this.sun.innerHTML = time;
         this.sun.setAttribute('datetime', time)
-        this.sun.style.transform = `translate(${x}px, ${y}px)`;
+        this.sun.style.transform = `translate(${x}px, ${-y}px)`;
         resolve();  
       });
     });
