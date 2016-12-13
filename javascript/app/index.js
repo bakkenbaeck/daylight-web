@@ -50,7 +50,7 @@ class Sol {
   }
 
   reverseGeocode(location) {
-    return fetch(`http://nominatim.openstreetmap.org/reverse?format=json&lat=${location.latitude}&lon=${location.longitude}&addressdetails=1`)
+    return fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.latitude}&lon=${location.longitude}&addressdetails=1`)
       .then(resp => resp.json())
       .then(position => {
         return {
