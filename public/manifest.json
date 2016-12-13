@@ -1,0 +1,6 @@
+{
+  "name": "Sol",
+  "start_url": "/",
+  "orientation": "portrait",
+  "display": "standalone"
+}
