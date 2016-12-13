@@ -27,14 +27,8 @@ app.get('/', (req, res) => {
   const data = {
     theme,
     now: utils.timeFormatter(now),
-    sunrise: {
-      time: sunrise,
-      display: utils.timeFormatter(sunrise),
-    },
-    sunset: {
-      time: sunset,
-      display: utils.timeFormatter(sunset),
-    },
+    sunrise: utils.timeFormatter(sunrise),
+    sunset: utils.timeFormatter(sunset),
     city, 
     country,
     location,
