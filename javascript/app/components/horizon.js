@@ -2,10 +2,15 @@ import utils from '../../shared/utils';
 import sunCalc from '../../shared/sunCalc';
 
 class Horizon {
-  constructor(sunrise, sunset) {
-    this.sunrise = sunrise;
-    this.sunset = sunset;
+  constructor(date, location) {
+    this.now = date; 
+    this.currentLocation = location;
+    this.sunObject = sunCalc.getDay(this.now, this.currentLocation);
+    this.currentTheme = thus.sunObject.theme
+    this.sunrise = this.sunObject.sunrise;
+    this.sunset = thus.sunObject.sunset;
 
+    this.rootElement = document.documentElement;
     this.graph = document.querySelector('.horizon__sky');
     this.sun = document.querySelector('.js-sun');
 
@@ -26,6 +31,13 @@ class Horizon {
   update() {
     return new Promise(resolve => {
       const now = new Date();
+      const sunObject = sunCalc.getDay(now, this.currentLocation);
+      
+      if (sunObject.theme !== this.currentTheme) {
+        this.rootElement.classList.remove(`theme-${this.currentTheme}`);
+        this.rootElement.classList.add(`theme-${sunObject.theme}`);
+        this.currentTheme = sunObject.theme;
+      }
 
       const time = utils.timeFormatter(now);
       const position = (now - this.sunrise) / (this.sunset - this.sunrise);
