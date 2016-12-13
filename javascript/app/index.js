@@ -6,4 +6,4 @@ const location = {latitude, longitude};
 const now = new Date();
 
 const horizon = new Horizon(now, location);
-//horizon.init();
+horizon.init();

@@ -6,13 +6,15 @@ class Horizon {
     this.now = date; 
     this.currentLocation = location;
     this.sunObject = sunCalc.getDay(this.now, this.currentLocation);
-    this.currentTheme = thus.sunObject.theme
+    this.currentTheme = this.sunObject.theme;
     this.sunrise = this.sunObject.sunrise;
-    this.sunset = thus.sunObject.sunset;
+    this.sunset = this.sunObject.sunset;
 
     this.rootElement = document.documentElement;
     this.graph = document.querySelector('.horizon__sky');
     this.sun = document.querySelector('.js-sun');
+    this.sunriseElement = document.querySelector('.js-sunrise');
+    this.sunsetElement = document.querySelector('.js-sunset');
 
     this.update = this.update.bind(this);
   }
@@ -39,6 +41,14 @@ class Horizon {
         this.currentTheme = sunObject.theme;
       }
 
+      if (this.now.toDateString() !== now.toDateString()) {
+        this.now = now;
+        this.sunObject = sunCalc.getDay(now, this.currentLocation);
+        this.sunrise = this.sunObject.sunrise;
+        this.sunset = this.sunObject.sunset;
+        this.updateUI();
+      }
+
       const time = utils.timeFormatter(now);
       const position = (now - this.sunrise) / (this.sunset - this.sunrise);
       let {x,y} = sunCalc.getSunPosition(position);
@@ -52,6 +62,18 @@ class Horizon {
       });
     });
   }
+
+  updateUI() {
+    const sunset = utils.timeFormatter(this.sunset);
+    const sunrise = utils.timeFormatter(this.sunrise);
+
+    this.sunsetElement.textContent = sunset;
+    this.sunsetElement.setAttribute('datetime', sunset);
+
+    this.sunriseElement.textContent = sunrise;
+    this.sunriseElement.setAttribute('datetime', sunrise);
+  }
+
 
 }
 
