@@ -46,7 +46,7 @@ class Horizon {
         this.sunObject = sunCalc.getDay(now, this.currentLocation);
         this.sunrise = this.sunObject.sunrise;
         this.sunset = this.sunObject.sunset;
-        this.updateUI();
+        this.updateHorizen();
       }
 
       const time = utils.timeFormatter(now);
@@ -63,7 +63,7 @@ class Horizon {
     });
   }
 
-  updateUI() {
+  updateHorizen() {
     const sunset = utils.timeFormatter(this.sunset);
     const sunrise = utils.timeFormatter(this.sunrise);
 
@@ -72,6 +72,18 @@ class Horizon {
 
     this.sunriseElement.textContent = sunrise;
     this.sunriseElement.setAttribute('datetime', sunrise);
+  }
+
+  updateUI(location) {
+    return new Promise(resolve => {
+      this.currentLocation = location;
+      this.sunObject = sunCalc.getDay(new Date(), this.currentLocation);
+      this.currentTheme = this.sunObject.theme;
+      this.sunrise = this.sunObject.sunrise;
+      this.sunset = this.sunObject.sunset;
+      this.updateHorizen();
+      resolve(utils.generateSentence(this.sunObject.daylight, this.currentTheme));
+    });
   }
 
 

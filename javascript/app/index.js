@@ -3,29 +3,40 @@ import Store from './store';
 
 class Sol {
   constructor() {
-
     const app = document.getElementById('app');
     const {latitude, longitude, city, country} = app.dataset;
-    const location = { 
+    const now = new Date();
+
+    this.sentence = document.querySelector('.js-sentence');
+    this.place = document.querySelector('.js-place');
+
+    this.location = { 
       location: {latitude, longitude},
       city, country
     };
-    const now = new Date();
 
-    Store.set('location', location);
+    this.horizon = new Horizon(now, this.location.location);
+    this.horizon.init();
 
-    const horizon = new Horizon(now, location.location);
-    horizon.init();
+    Store.get('location').catch(() => Store.set('location', this.location));
 
     this.getUserLocation().then(position => {
-      if (location.city !== position.city) {
+      if (this.location.city !== position.city) {
         Store.set('location', position);
-        console.log('update ui with new location');
+        this.location = position;
+        this.updateUI();
       }
     }).catch(error => {
       console.log(error);
     });
 
+  }
+
+  updateUI() {
+    this.place.textContent = `${this.location.city}, ${this.location.country}`;
+    this.horizon.updateUI(this.location.location).then(sentence => {
+      this.sentence.innerHTML = sentence;
+    })
   }
 
   getUserLocation() {
@@ -43,7 +54,10 @@ class Sol {
       .then(resp => resp.json())
       .then(position => {
         return {
-          location,
+          location: {
+            latitude: position.lat, 
+            longitude: position.lon,
+          },
           city: position.address.city,
           country: position.address.country
         }
