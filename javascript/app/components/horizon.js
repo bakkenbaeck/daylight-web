@@ -53,9 +53,15 @@ class Horizon {
       const position = (now - this.sunrise) / (this.sunset - this.sunrise);
       let {x,y} = sunCalc.getSunPosition(position);
 
-      if (x === 0 && y === 0) { return resolve(); }
+      const hasClass = this.sun.classList.contains('show-time');
+
+      if (y === 0) { 
+        if (hasClass) { this.sun.classList.remove('sun-time'); }
+        return resolve();
+       }
 
       requestAnimationFrame(() => {
+        if(!hasClass) { this.sun.classList.add('show-time'); }
         this.sun.dataset.time = time;
         this.sun.style.bottom = y + '%';
         this.sun.style.left = x + '%';
