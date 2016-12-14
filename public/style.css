@@ -95,6 +95,10 @@ b {
   margin-top: 2rem;
 }
 
+.app__main {
+  margin-top: auto;
+}
+
 .sun {
   position: relative;
 }
@@ -124,7 +128,6 @@ b {
 
 .horizon {
   font-size: .75rem;
-  margin-top: auto;
   margin-bottom: 3rem;
 }
 

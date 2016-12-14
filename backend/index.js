@@ -13,9 +13,11 @@ const sunCalc = require('../javascript/shared/sunCalc');
 const app = express();
 app.use(express.static('public'));
 
+Handlebars.registerHelper("showTime", (o) => o.data.root.sunPosition.y > 0 ? 'show-time' : '');
+
 app.get('/', (req, res) => {
   const now = new Date();
-  //const now = new Date(2016, 11, 13, 9, 0);
+  //const now = new Date(2016, 11, 12, 9, 13);
   
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const {city, country, location} = geoip.allData(ip);
@@ -42,6 +44,10 @@ app.get('/', (req, res) => {
   });
 });
 
+
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + '/about.html');
+});
 
 app.listen(23886, () => {
   console.log('Running on port 23886')
