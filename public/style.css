@@ -126,7 +126,8 @@ b {
 }
 
 .horizon__sky {
-  height: 250px;
+  height: 180px;
+  padding-top: 1.5rem;
   overflow: hidden;
 }
 
@@ -141,12 +142,21 @@ b {
 .horizon__sun {
   text-align: center;
   width: 2rem;
-  height: 2.5rem;
+  height: 1rem;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 1;
-  transform: translate(-1rem, 2.5rem);
+  transform: translate(-1rem, 1rem);
+}
+
+.horizon__sun:after {
+  content: attr(data-time);
+  width: 100%;
+  margin-bottom: .625rem;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
 }
 
 .horizon__line {

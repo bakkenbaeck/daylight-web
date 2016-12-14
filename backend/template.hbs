@@ -17,9 +17,9 @@
     <main class="app" id="app" data-latitude="{{location.latitude}}" data-longitude="{{ location.longitude }}" data-city="{{ city }}" data-country="{{ country }}">
       <a class="sun sun--main sun--left muted" href="/"><h1 class="text-small">Sol</h1></a>
       <div class="horizon">
-        <div class="horizon__sky">
+        <div class="horizon__sky" aria-hidden="true">
           <div class="horizon__sky-wrap">
-            <time class="horizon__sun sun sun--bottom js-sun" style="left: {{sunPosition.x }}%; bottom: {{ sunPosition.y }}%;" datetime="{{ now }}">{{ now }}</time>
+            <span class="horizon__sun sun sun--bottom js-sun" data-time="{{ now }}" style="left: {{sunPosition.x }}%; bottom: {{ sunPosition.y }}%;"></span>
           </div>
         </div>
         <div class="horizon__line">
