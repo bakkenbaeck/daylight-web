@@ -22,7 +22,7 @@ class Daylight {
         this.sun.classList.add('show-time');
       }
       requestAnimationFrame(() => {
-        this.sun.dataset.time = utils.timeFormatter(now);
+        this.sun.dataset.time = utils.timeFormatter(time);
         this.sun.style.bottom = `${position.y}%`;
         this.sun.style.left = `${position.x}%`  ;
       });
