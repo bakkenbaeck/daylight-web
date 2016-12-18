@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
   //const now = new Date(2016, 11, 12, 9, 13);
   
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  const {city, country, location} = geoip.allData(ip);
-  //const {city, country, location} = geoip.allData('185.55.105.254');
+  //const {city, country, location} = geoip.allData(ip);
+  const {city, country, location} = geoip.allData('185.55.105.254');
   const {theme, sunrise, sunset, daylight} = sunCalc.getDay(now, location);
   const progress = (now - sunrise) / (sunset - sunrise);
   const {x, y} = sunCalc.getSunPosition(progress)

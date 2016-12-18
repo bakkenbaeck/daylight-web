@@ -7,8 +7,7 @@ const dbPromise = idb.open('sol-store', 1, upgradeDB => {
 const Store = {
   get(key) {
     return dbPromise.then(db => {
-      return db.transaction('sol')
-        .objectStore('sol').get(key);
+      return db.transaction('sol').objectStore('sol').get(key).then(value => value || Promise.reject());
     });
   },
   set(key, val) {
