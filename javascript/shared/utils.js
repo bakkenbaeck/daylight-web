@@ -2,45 +2,73 @@ const leftPad = (int) => int >= 10 ? int : '0' + int;
 const timeFormatter = date => `${leftPad(date.getHours())}:${leftPad(date.getMinutes())}`;
 
 const generateSentence = (daylight, theme) => {
+
+  const minutes = theme === 'night' ? daylight.tomorrow.minutes : daylight.today.minutes;
+  const minuteString = minutes > 1 ? 'minutes' : 'minute';
+  
   const sentences = {
     day: {
-      positive: [
-        '<span class="muted">Today, you have</span> <b>{{min}} minutes</b> <span class="muted">more sunlight than yesterday. Enjoy!</span>',
-        '<span class="muted">You’ve got</span> <b>{{min}} more minutes</b> <span class="muted">of sunlight today. How will you spend them?</span>',
-        '<span class="muted">Happy days! This day is</span> <b>{{min}} minutes</b> <span class="muted">longer than yesterday. Will you make it count?</span>',
-        '<span class="muted">Today brings you</span> <b>{{min}} extra minutes</b> <span class="muted">of daylight. Enjoy it while it’s there!</span>',
-        '<span class="muted">You know what? You can enjoy</span> <b>{{min}} more minutes</b> <span class="muted">of daylight today!</span>',
-      ],
+      positive: {
+        minutes: [
+          `<span class="muted">Today is</span> <b>${minutes} ${minuteString}</b> <span class="muted">longer than yesterday. Happy days!</span>`,
+          `<span class="muted">The sun is out for</span> <b>${minutes} more ${minuteString}</b> <span class="muted">today. Enjoy!</span>`,
+          `<b>${minutes} extra ${minuteString}</b> <span class="muted">of sunshine today. Make them count!</span>`,
+          `<span class="muted">Make sure to soak up that vitamin D.</span> <b>${minutes} more ${minuteString}</b> <span class="muted">of daylight today!</span>`,
+          `<span class="muted">Smile! Today has</span> <b>${minutes} more ${minuteString}</b> <span class="muted">of daylight than yesterday! </span>`,
+          `<b>${minutes} more ${minuteString}</b> <span class="muted">of daylight today. Just let it sink in…</span>`,
+          `<span class="muted">Today is</span> <b>${minutes} ${minuteString} longer</b>. <span class="muted">It’s getting better and better!</span>`,
+          `<span class="muted">Bring out your shorts, because today has</span> <b>${minutes} more ${minuteString}</b> <span class="muted">of sunlight.</span>`,
+          `<span class="muted">Have a great day and enjoy those</span> <b>${minutes} extra ${minuteString}</b> <span class="muted">of daylight.</span>`,
+          `<span class="muted">After darkness comes daylight.</span> <b>${minutes} more ${minuteString}</b> <span class="muted">to be precise!</span>`,
+        ],
+        seconds: [
+          `<span class="muted">Little less than</span> <b>a minute</b> <span class="muted">of extra sunlight today. It’s getting better!</span>`,
+          `<span class="muted">We’ve reached the tipping point: we’ll have more sunlight every day now!</span>`,
+          `<b>About a minute</b> <span class="muted">of extra light. You’ll start noticing the difference soon!</span>`,
+          `<span class="muted">There’s</span> <b>about a minute</b> <span class="muted">of extra light at the end of this tunnel.</span>`,
+          `<span class="muted">We’ll have</span> <b>about a minute</b> <span class="muted">of extra light today. It’s upwards from here.</span>`,
+        ],
+      },
       negative: [
-        '<span class="muted">Buu, today it\'s</span> <b>{{min}} minutes</b> <span class="muted">less sunlight than yesterday..</span>',
+        `<span class="muted">The sun will be out</span> <b>${minutes} ${minuteString} less</b> <span class="muted">today. Keep your head up!</span>`,
+        `<b>${minutes} ${minuteString} less</b> <span class="muted">sunlight today, unfortunately. It’ll get better!</span>`,
+        `<span class="muted">Sadly, the day will be</span> <b>${minutes} ${minuteString} shorter</b><span class="muted">. Make the most out of it!</span>`,
       ]
     },
-    night: {
-      positive: [
-        '<span>The sun has set, but don\'t worry. Tomorrow there is</span> <b>{{min}} more bright minutes</b> <span>for you.</span>',
-      ],
-      negative: [
-        '<span>The sun has set, and that\'s pretty sad. Tomorrow there is</span> <b>{{min}} less bright minutes</b> <span>:(</span>'
-      ]
-    }
+    night: [
+      `<span class="muted">Get a good night’s sleep: tomorrow there’ll be</span> <b>${minutes} more ${minuteString}</b> <span class="muted">of sunlight.</span>`,
+      `<span class="muted">Lights out. Enjoy</span> <b>${minutes} more ${minuteString}</b> <span class="muted">of sunlight tomorrow!</span>`,
+      `<span class="muted">Bring out those pyjamas.</span> <b>${minutes} more ${minuteString}</b> <span class="muted">of light await tomorrow.</span>`,
+      `<span class="muted">The sun has set for today. Embrace those</span> <b>${minutes} ${minuteString}</b> <span class="muted">of extra daylight tomorrow.</span>`,
+      `<span class="muted">The sun has set. Soak up the extra vitamin D tomorrow!</span>`,
+    ],
   } 
+  const nightFallback = `<span class="muted">The sun has set. Soak up the extra vitamin D tomorrow!</span>`;
 
-  let type = '';
-  let context = '';
-  let min = 0;
+
+  const context = theme === 'night' ? 'tomorrow' : 'today';
+  const positive = daylight[context].positive
+  let sentenceArray = [];
 
   if (theme === 'night') {
-    type = 'night';
-    context = daylight.tomorrow.positive ? 'positive' : 'negative';
-    min = daylight.tomorrow.minutes;
+    if (positive && minutes >= 1) {
+      sentenceArray = sentences.night;
+    } else {
+      return nightFallback;
+    }
   } else {
-    type = 'day';
-    context = daylight.today.positive ? 'positive' : 'negative';
-    min = daylight.today.minutes;
+    if (positive) {
+      if (minutes >= 1) {
+        sentenceArray = sentences.day.positive.minutes;
+      } else {
+        sentenceArray = sentences.day.positive.seconds;
+      }
+    } else {
+      sentenceArray = sentences.day.negative;
+    }
   }
 
-  const current = sentences[type][context];
-  return current[Math.floor(Math.random() * current.length)].split('{{min}}').join(min);
+  return sentenceArray[Math.floor(Math.random() * sentenceArray.length)];
 }
 
 
