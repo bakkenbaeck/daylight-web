@@ -1,7 +1,12 @@
 const SunCalc = require('suncalc');
 
 const _daylight = (sunObject) => (sunObject.sunset - sunObject.sunriseEnd) / 60000; 
-const _daylightDiff = (d, y) =>  Math.abs(Math.round(d - y));
+const _daylightDiff = (x, y) => {
+  
+  const time = Math.abs(x - y);
+  return time < .5 ? 0 : Math.round(time);
+
+} 
 
 function getTheme(date, sun) {
   if (date >= sun.sunrise && date <= sun.sunriseEnd) {

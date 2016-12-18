@@ -54,7 +54,7 @@ class App {
     }
 
     const position = (now - this.sunObject.sunrise) / (this.sunObject.sunset - this.sunObject.sunrise);
-    this.daylight.setSunPosition(now, position);
+    this.daylight.setSunPosition(now, sunCalc.getSunPosition(position));
   }
 
   updateTheme(oldSunobject, newSunobject) {
@@ -65,7 +65,7 @@ class App {
       this.updateSentence(this.sunObject.daylight, this.sunObject.theme);
     }
     
-    this.sunObject = sunObject;
+    this.sunObject = newSunobject;
   }
 
   getUserLocation() {
