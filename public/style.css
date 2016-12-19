@@ -214,10 +214,10 @@ b {
 }
 
 .landing .brand__sun {
-  font-size: 20px;
+  font-size: 40px;
   vertical-align: middle;
   display: inline-block;
-  margin-top: -2px;
+  margin-top: -8px;
   animation: sunUp 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -271,7 +271,6 @@ b {
   width: 120px;
   height: 120px;
   border-radius: 20px;
-  background: #ffffff;
   margin: 0 0 25px 0;
   overflow: hidden;
 }
