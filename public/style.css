@@ -173,3 +173,92 @@ b {
   position: relative;
   z-index: 2;
 }
+
+
+
+
+
+
+
+/* Landing page*/
+.landing {
+  width: 490px;
+  margin: 0 auto;
+  padding: 100px 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.landing h1,
+.landing h2 {
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+
+.landing .brand {
+  margin-bottom: 85px;
+}
+
+.landing .brand span {
+  font-size: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: -2px;
+}
+
+.landing .text {
+  margin-bottom: 57px;
+}
+
+.landing .text:nth-child(3) {
+  margin-bottom: 93px;
+}
+
+.landing ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.landing p {
+  margin: 0;
+}
+
+.landing .apps ul {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 93px;
+}
+
+.landing .apps__item {
+  width: 120px;
+  font-size: 16px;
+}
+
+.landing .app-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  background: #ffffff;
+  margin: 0 0 25px 0;
+}
+
+.landing .app-title {
+  margin-bottom: 10px;
+}
+
+.landing .app-cta {
+  opacity: 0.5;
+}
+
+.landing .text-medium {
+  font-size: 1.5rem;
+}
+
+.landing .text-medium span {
+  opacity: 0.5;
+}
+
+.landing__footer {
+  margin-top: 80px;
+}
