@@ -8,13 +8,24 @@ class App {
     this.timeInterval = null;
     this.userLocation = userLocation;
     this.rootElement = document.documentElement;
-    
+    this.horizon = document.querySelector('.js-horizon');
+
     this.daylight = new Daylight();
     this.sunObject = sunCalc.getDay(this.now, this.userLocation.location);
     
     this.update = this.update.bind(this);
     this.onVisibilitychange = this.onVisibilitychange.bind(this);
-  
+  }
+
+  bootstrap() {
+    this.daylight.render(this.sunObject, this.userLocation);
+    this.horizon.classList.remove('is-hidden');
+
+    if (this.sunObject.theme !== 'daylight') {
+      this.rootElement.classList.remove(`theme-daylight`);
+      this.rootElement.classList.add(`theme-${this.sunObject.theme}`);
+    }
+    
     this.startInterval();
     this._addEventListener();
     this._checkUserLocation();
@@ -112,8 +123,9 @@ class App {
       if (location.city !== this.userLocation.city) {
         this.userLocation = location;
         this.sunObject = sunCalc.getDay(this.now, this.userLocation.location);
-        this.daylight.render(this.sunObject);
-        this.daylight.updateLocation(this.userLocation);
+        this.daylight.render(this.sunObject, this.location);
+      } else {
+        this.userLocation = location;
       }
       Store.set('userLocation', this.userLocation);
     }).catch(() => {

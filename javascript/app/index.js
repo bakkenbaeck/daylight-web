@@ -1,10 +1,6 @@
 import App from './components/App';
 
-const app = document.getElementById('app');
-const { latitude, longitude, city, country } = app.dataset;
-const userLocation = { 
-  location: { latitude, longitude },
-  city, country,
-};
+const userLocation = JSON.parse(document.getElementById('app').dataset.location);
 
-new App(userLocation);
+const app = new App(userLocation);
+app.bootstrap();

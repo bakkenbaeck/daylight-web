@@ -173,3 +173,8 @@ b {
   position: relative;
   z-index: 2;
 }
+
+
+.is-hidden {
+  opacity: 0;
+}

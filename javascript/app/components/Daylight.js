@@ -8,6 +8,7 @@ class Daylight {
     this.sunrise = document.querySelector('.js-sunrise');
     this.sunset = document.querySelector('.js-sunset');
     this.sunVisible = this.sun.classList.contains('show-time');
+    this.parser = new DOMParser();
   }
 
   setSunPosition(time, position) {
@@ -30,10 +31,10 @@ class Daylight {
   }
 
   updateSentence(daylight, theme) {
-    utils.generateSentence(daylight, theme);
+    this.sentence.innerHTML = utils.generateSentence(daylight, theme);
   }
 
-  updateLocation(location) {
+  setLocation(location) {
     this.location.textContent = `${location.city}, ${location.country}`; 
   }
 
@@ -48,9 +49,12 @@ class Daylight {
     this.sunset.setAttribute('datetime', sunset);
   }
 
-  render(sunObject) {
+  render(sunObject, location = null) {
     this.updateSentence(sunObject.daylight, sunObject.theme);
     this.updateTimes(sunObject);
+    if (location) {
+      this.setLocation(location)
+    }
   }
 
 }
