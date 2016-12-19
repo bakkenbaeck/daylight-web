@@ -1,4 +1,4 @@
-const SunCalc = require('suncalc');
+import SunCalc from 'suncalc';
 
 const _daylight = (sunObject) => (sunObject.sunset - sunObject.sunriseEnd) / 60000; 
 const _daylightDiff = (x, y) => Math.abs(Math.round(x - y));
@@ -66,4 +66,4 @@ const getSunPosition = progress => {
   
 }
 
-module.exports = {getSunPosition, getDay};
+export {getSunPosition, getDay};

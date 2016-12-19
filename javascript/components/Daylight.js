@@ -1,4 +1,4 @@
-import utils from '../../shared/utils';
+import {timeFormatter, generateSentence} from '../utils/utils';
 
 class Daylight {
   constructor() {
@@ -23,7 +23,7 @@ class Daylight {
         this.sun.classList.add('show-time');
       }
       requestAnimationFrame(() => {
-        this.sun.dataset.time = utils.timeFormatter(time);
+        this.sun.dataset.time = timeFormatter(time);
         this.sun.style.bottom = `${position.y}%`;
         this.sun.style.left = `${position.x}%`  ;
       });
@@ -31,7 +31,7 @@ class Daylight {
   }
 
   updateSentence(daylight, theme) {
-    this.sentence.innerHTML = utils.generateSentence(daylight, theme);
+    this.sentence.innerHTML = generateSentence(daylight, theme);
   }
 
   setLocation(location) {
@@ -39,8 +39,8 @@ class Daylight {
   }
 
   updateTimes(sunObject) {
-    const sunrise = utils.timeFormatter(sunObject.sunrise);
-    const sunset = utils.timeFormatter(sunObject.sunset);
+    const sunrise = timeFormatter(sunObject.sunrise);
+    const sunset = timeFormatter(sunObject.sunset);
 
     this.sunrise.textContent = sunrise;
     this.sunrise.setAttribute('datetime', sunrise);

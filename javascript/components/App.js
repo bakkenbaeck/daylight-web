@@ -1,6 +1,6 @@
-import sunCalc from '../../shared/sunCalc';
+import { getDay, getSunPosition } from '../utils/sun';
 import Daylight from './Daylight';
-import Store from './Store';
+import Store from '../utils/Store';
 
 class App {
   constructor(userLocation) {
@@ -11,7 +11,8 @@ class App {
     this.horizon = document.querySelector('.js-horizon');
 
     this.daylight = new Daylight();
-    this.sunObject = sunCalc.getDay(this.now, this.userLocation.location);
+    
+    this.sunObject = getDay(this.now, this.userLocation.location);
     
     this.update = this.update.bind(this);
     this.onVisibilitychange = this.onVisibilitychange.bind(this);
@@ -54,7 +55,7 @@ class App {
 
   update() {
     const now = new Date();
-    const sunObject = sunCalc.getDay(now, this.userLocation.location);
+    const sunObject = getDay(now, this.userLocation.location);
 
     if (sunObject.theme !== this.sunObject.theme) {
       this.updateTheme(this.sunObject, sunObject);
@@ -67,7 +68,7 @@ class App {
     }
 
     const position = (now - this.sunObject.sunrise) / (this.sunObject.sunset - this.sunObject.sunrise);
-    this.daylight.setSunPosition(now, sunCalc.getSunPosition(position));
+    this.daylight.setSunPosition(now, getSunPosition(position));
   }
 
   updateTheme(oldSunobject, newSunobject) {
@@ -123,7 +124,7 @@ class App {
     this.getUserLocation().then(location => {
       if (location.city !== this.userLocation.city) {
         this.userLocation = location;
-        this.sunObject = sunCalc.getDay(this.now, this.userLocation.location);
+        this.sunObject = getDay(this.now, this.userLocation.location);
         this.daylight.render(this.sunObject, this.location);
       } else {
         this.userLocation = location;

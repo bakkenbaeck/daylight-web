@@ -73,4 +73,4 @@ const generateSentence = (daylight, theme) => {
 
 
 
-module.exports = {leftPad, timeFormatter, generateSentence};
+export {timeFormatter, generateSentence}
