@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="landing-transition">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,10 +17,10 @@
   </head>
   <body>
     <main class="landing">
-      <h1 class="brand"><span>&#9679</span> Daylight</h1>
+      <h1 class="brand is-colored"><span class="brand__sun">&#9679</span> <span class="brand__name">Daylight</span></h1>
 
       <p class="text">
-        Daylight is a simple app that tells you how much longer the day gets.
+        Daylight is a simple app that notifies you when the days are getting longer.
       </p>
 
       <p class="text">
@@ -33,7 +33,7 @@
           <li class="apps__item">
             <a href="" target="_blank">
               <figure class="app-icon">
-                <img src="" />
+                <img src="icon-ios.png" />
               </figure>
 
               <figcaption>
@@ -46,13 +46,13 @@
           <!--iPhone-->
           <li class="apps__item">
             <a href="" target="_blank">
-              <figure class="app-icon">
-                <img src="" />
+              <figure class="app-icon app-icon--ios">
+                <img src="icon-ios.png" />
               </figure>
 
               <figcaption>
-                <h2 class="app-title">Web app</h2>
-                <p class="app-cta">Open app</p>
+                <h2 class="app-title">iPhone app</h2>
+                <p class="app-cta">Coming soonp</p>
               </figcaption>
             </a>
           </li>
@@ -65,8 +65,8 @@
               </figure>
 
               <figcaption>
-                <h2 class="app-title">Web app</h2>
-                <p class="app-cta">Open app</p>
+                <h2 class="app-title">Android app</h2>
+                <p class="app-cta">Get the app</p>
               </figcaption>
             </a>
           </li>
@@ -77,11 +77,10 @@
         <!--We're using spans here so we can just inherit theme color and set opacity on these lighter text-->
         <span>An experiment by </span>
         <a href="http://bakkenbaeck.com">Bakken &amp; Bæck.</a>
-      </p>
-
-      <p class="text-medium">
-        <span>You can read about it </span>
+        <span>Read more about it </span>
         <a href="">here.</a>
+        <span> Daylight is open sourced for </span>
+        Android, iOS, and web.
       </p>
 
       <footer class="landing__footer">

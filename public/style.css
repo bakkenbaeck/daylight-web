@@ -204,13 +204,26 @@ b {
 
 .landing .brand {
   margin-bottom: 85px;
+  position: relative;
+  z-index: 999;
+  transition: color 2.9s;
 }
 
-.landing .brand span {
+.landing .brand.is-colored {
+  color:#80D0F3;
+}
+
+.landing .brand__sun {
   font-size: 20px;
   vertical-align: middle;
   display: inline-block;
   margin-top: -2px;
+  animation: sunUp 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.landing .brand__name {
+  opacity: 0;
+  animation: fadeIn 2s 1.5s forwards;
 }
 
 .landing .text {
@@ -220,6 +233,17 @@ b {
 
 .landing .text:nth-child(3) {
   margin-bottom: 93px;
+}
+
+@media (max-width: 600px) {
+  .landing .text {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+  }
+
+  .landing .text:nth-child(3) {
+    margin-bottom: 50px;
+  }
 }
 
 .landing ul {
@@ -249,17 +273,32 @@ b {
   border-radius: 20px;
   background: #ffffff;
   margin: 0 0 25px 0;
+  overflow: hidden;
+}
+
+.landing .app-icon--ios {
+  border-radius: 30px;
+}
+
+.landing .app-icon img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 600px) {
+  .landing .apps ul {
+    margin-bottom: 50px;
+  }
+
   .landing .apps__item {
-    width: 100px;
+    width: 25vw;
     text-align: center;
   }
 
   .landing .app-icon {
-    width: 100px;
-    height: 100px;
+    width: 25vw;
+    height: 25vw;
   }
 }
 
@@ -275,6 +314,12 @@ b {
   font-size: 1.5rem;
 }
 
+@media (max-width: 600px) {
+  .landing .text-medium {
+    font-size: 1.1rem;
+  }
+}
+
 .landing .text-medium span {
   opacity: 0.5;
 }
@@ -287,10 +332,55 @@ b {
   opacity: 0.5;
 }
 
+@media (max-width: 600px) {
+  .landing__footer {
+    font-size: 0.9rem;
+  }
+}
+
 .landing a {
   transition: opacity 0.5s;
 }
 
 .landing a:hover {
   opacity: 0.7;
+}
+
+.landing-transition body:after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #031320;
+  animation: bgTransition 3s 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  transform: translate3d(0,0,0);
+}
+
+.text, .text-medium, .apps, .landing__footer {
+  opacity: 0;
+  animation: fadeIn 2.3s 2.55s forwards;
+}
+
+@keyframes bgTransition {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
+
+@keyframes sunUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+
+@keyframes toColor {
+  0% { color: #80D0F3; }
+  100% { color: inherit; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
