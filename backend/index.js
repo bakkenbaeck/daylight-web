@@ -13,9 +13,7 @@ cacheIndex();
 
 app.get('/', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  //const {city, country, location} = geoip.allData(ip);
-
-  replaceContent(geoip.allData('185.55.105.254')).then(html => res.send(html))
+  replaceContent(geoip.allData(ip)).then(html => res.send(html))
 });
 
 function replaceContent(location) {
