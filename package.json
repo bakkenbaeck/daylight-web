@@ -5,6 +5,9 @@
   "contour": "2.0.0",
   "version": "2.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "7.1.0"
+  },
   "scripts": {
     "css": "node tasks/css",
     "css:build": "node tasks/css minify",
@@ -28,14 +31,13 @@
     "build": "npm run build:init && npm run webpack:build && npm run rev",
     "build:init": "mkdirp 'public' && npm run clean && npm run svg && npm run templates:build && npm run css:build && npm run copy && npm run imagemin",
     "prod": "npm run build:init && npm run webpack:prod && npm run rev",
-    "postinstall": "node tasks/postinstall"
+    "postinstall": "node tasks/postinstall",
+    "heroku-postbuild": "npm run prod"
   },
   "dependencies": {
     "express": "^4.14.0",
     "geo-from-ip": "^1.0.6",
-    "mz": "^2.6.0"
-  },
-  "devDependencies": {
+    "mz": "^2.6.0",
     "autoprefixer": "^6.5.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
