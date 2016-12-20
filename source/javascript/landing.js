@@ -23,8 +23,3 @@ setTimeout(() => {
   document.querySelector('.sun').classList.remove('is-colored');
 }, 2900);
 
-/*
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
-*/
