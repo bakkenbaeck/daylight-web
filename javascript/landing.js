@@ -20,5 +20,5 @@ document.documentElement.classList.add('theme-' + theme);
 
 // since animating to color: inherit does not work on safari we gotta toggle a class instead
 setTimeout(() => {
-  document.querySelector('.brand').classList.remove('is-colored');
+  document.querySelector('.sun').classList.remove('is-colored');
 }, 2900);
