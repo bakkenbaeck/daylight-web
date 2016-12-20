@@ -20,18 +20,16 @@ app.get('/app', (req, res) => {
     ipAddr = req.connection.remoteAddress;
   }
 
+  let location = null;
   try {
-    const location = geoip.allData(ipAddr);
-    replaceContent(location).then(html => res.send(html))
-  } catch(e) {
-    replaceContent().then(html => res.send(html))
-  };
-
-  
+    location = geoip.allData(ipAddr);
+  } catch(e) {}
+    
+  replaceContent(location).then(html => res.send(html));
 });
 
 function replaceContent(location = null) {
-  return new Promise(resolve => resolve(index.replace('{{location}}', JSON.stringify(location))));
+  return new Promise(resolve => resolve(index.replace('[[location]]', JSON.stringify(location))));
 }
 
 function cacheIndex() {
@@ -42,6 +40,6 @@ function cacheIndex() {
 
 app.use(express.static('public'));
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log('Running on port ' + process.env.PORT || 5000);
+app.listen(process.env.PORT || 4000, () => {
+  console.log('Running on port ' + process.env.PORT || 4000);
 });
