@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    index: './javascript/index.js'
+    index: './javascript/index.js',
+    landing: './javascript/landing.js',
   },
   output: {
     path: './public',

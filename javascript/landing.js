@@ -1,5 +1,3 @@
-console.log('● Daylight by Bakken & Baæck.');
-
 const date = new Date();
 const hour = date.getHours();
 let theme;

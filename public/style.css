@@ -15,6 +15,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 300;
+  -webkit-font-smoothing: antialiased;
   background-color: currentColor; 
   min-height: 100vh; 
   margin: 0;
@@ -186,7 +187,6 @@ b {
   width: 490px;
   margin: 0 auto;
   padding: 100px 0;
-  -webkit-font-smoothing: antialiased;
 }
 
 @media (max-width: 600px) {
@@ -203,14 +203,28 @@ b {
   margin: 0;
 }
 
+
 .landing .brand {
   margin-bottom: 85px;
-  display: block;
+  position: relative;
+  z-index: 999;
+  transition: color 2.9s;
 }
-
-.brand.is-colored {
+.landing .brand.is-colored {
   color:#80D0F3;
 }
+.landing .brand__sun {
+  font-size: 40px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: -8px;
+  animation: sunUp 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.landing .brand__name {
+  opacity: 0;
+  animation: fadeIn 2s 1.5s forwards;
+}
+
 
 .landing .text {
   margin-bottom: 57px;
