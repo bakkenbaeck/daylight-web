@@ -32,7 +32,8 @@
     "build:init": "mkdirp 'public' && npm run clean && npm run svg && npm run templates:build && npm run css:build && npm run copy && npm run imagemin",
     "prod": "npm run build:init && npm run webpack:prod && npm run rev",
     "postinstall": "node tasks/postinstall",
-    "heroku-postbuild": "npm run prod"
+    "heroku-postbuild": "npm run prod",
+    "start": "node backend/index"
   },
   "dependencies": {
     "express": "^4.14.0",
