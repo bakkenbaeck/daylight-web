@@ -8,9 +8,9 @@ const getUserLocation = () => {
     Store.get('userLocation')
       .then(location => resolve(location))
       .catch(() => {
-        const userLocation = JSON.parse(document.getElementById('app').dataset.location);
-        if (userLocation.location) {
-          resolve(location);
+        const location = document.getElementById('app').dataset.location;
+        if (location) {
+          resolve(JSON.parse(location));
         } else {
           reject();
         }

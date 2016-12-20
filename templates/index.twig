@@ -1,0 +1,81 @@
+{% extends "_layout/main.twig" %}
+{% block content %}
+
+  <main class="landing">
+    <h1 class="brand is-colored"><span class="brand__sun">&#9679</span> <span class="brand__name">Daylight</span></h1>
+
+    <p class="text">
+      Daylight is a simple app that notifies you when the days are getting longer.
+    </p>
+
+    <p class="text">
+      Perfect for those dark and long winters of the north.
+    </p>
+
+    <nav class="apps">
+      <ul>
+        <!--Web-->
+        <li class="apps__item">
+          <a href="/app">
+            <figure class="app-icon">
+              <img src="/assets/icon-ios.png" />
+            </figure>
+
+            <figcaption>
+              <h2 class="app-title">Web app</h2>
+              <p class="app-cta">Open app</p>
+            </figcaption>
+          </a>
+        </li>
+
+        <!--iPhone-->
+        <li class="apps__item">
+          <a href="#">
+            <figure class="app-icon app-icon--ios">
+              <img src="/assets/icon-ios.png" />
+            </figure>
+
+            <figcaption>
+              <h2 class="app-title">iPhone app</h2>
+              <p class="app-cta">Coming soon</p>
+            </figcaption>
+          </a>
+        </li>
+
+        <!--Android-->
+        <li class="apps__item">
+          <a href="#">
+            <figure class="app-icon">
+              <img src="/assets/icon-android.png" />
+            </figure>
+
+            <figcaption>
+              <h2 class="app-title">Android app</h2>
+              <p class="app-cta">Get the app</p>
+            </figcaption>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <p class="text-medium">
+      <!--We're using spans here so we can just inherit theme color and set opacity on these lighter text-->
+      <span>An experiment by </span>
+      <a href="http://bakkenbaeck.com">Bakken &amp; Bæck.</a>
+      <span>Read more about it </span>
+      <a href="#">here.</a>
+      <span> Daylight is open sourced for </span>
+      <a href="">Android</a>, <a href="#">iOS</a> and <a href="#">web</a>.
+    </p>
+
+    <footer class="landing__footer">
+      <span>Shoutout to </span>
+      <a href="http://www.suncalc.org/">SunCalc</a>
+      <span> for the API and </span>
+      <a href="https://www.grillitype.com/">Grilli Type</a>
+      <span> for the nice type.</span>
+    </footer>
+  </main>
+
+  <script src="/landing.js"></script>
+{% endblock %}

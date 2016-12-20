@@ -1,10 +1,16 @@
+const config = require('./contour');
+const {source, dest} = config.paths;
+
+const entry = {};
+
+config.tasks.webpack.entries.forEach(file => {
+  entry[file] = `${source}/javascript/${file}`;
+});
+
 module.exports = {
-  entry: {
-    index: './javascript/index.js',
-    landing: './javascript/landing.js',
-  },
+  entry,
   output: {
-    path: './public',
+    path: dest,
     publicPath: '/',
     filename: '[name].js',
   },

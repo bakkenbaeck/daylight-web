@@ -1,7 +1,9 @@
 'use strict';
+
 const fs = require('mz/fs')
 const path = require('path');
 const webpackConfig = require('./webpack');
+
 const mainfestPath = path.join(__dirname, 'webpack.manifest.json');
 
 webpackConfig.output.filename = '[name].[hash].js';
@@ -20,4 +22,5 @@ webpackConfig.plugins.push(
     });
   }
 );
+
 module.exports = webpackConfig;

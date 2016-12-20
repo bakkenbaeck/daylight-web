@@ -22,3 +22,9 @@ document.documentElement.classList.add('theme-' + theme);
 setTimeout(() => {
   document.querySelector('.sun').classList.remove('is-colored');
 }, 2900);
+
+/*
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+*/

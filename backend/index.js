@@ -13,10 +13,18 @@ cacheIndex();
 
 app.get('/app', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  replaceContent(geoip.allData(ip)).then(html => res.send(html))
+  
+  try {
+    const location = geoip.allData(ip);
+    replaceContent(location).then(html => res.send(html))
+  } catch(e) {
+    replaceContent().then(html => res.send(html))
+  };
+
+  
 });
 
-function replaceContent(location) {
+function replaceContent(location = null) {
   return new Promise(resolve => resolve(index.replace('{{location}}', JSON.stringify(location))));
 }
 
@@ -28,6 +36,6 @@ function cacheIndex() {
 
 app.use(express.static('public'));
 
-app.listen(23886, () => {
-  console.log('Running on port 23886')
+app.listen(4000, () => {
+  console.log('Running on port 4000')
 });
