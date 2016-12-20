@@ -8,7 +8,6 @@ class Daylight {
     this.sunrise = document.querySelector('.js-sunrise');
     this.sunset = document.querySelector('.js-sunset');
     this.sunVisible = this.sun.classList.contains('show-time');
-    this.parser = new DOMParser();
   }
 
   setSunPosition(time, position) {
