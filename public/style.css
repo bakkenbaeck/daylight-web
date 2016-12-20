@@ -307,6 +307,23 @@ b {
 
 .landing .app-cta {
   opacity: 0.5;
+  position: relative;
+}
+
+.landing .apps__item:nth-child(1) .app-cta:after {
+  transform: rotate(-135deg);
+}
+
+.landing .apps__item:nth-child(2) .app-cta:after {
+  display: none;
+}
+
+.landing .app-cta:after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background: url('landing/icon-arrow.svg') no-repeat center center;
 }
 
 .landing .text-medium {
