@@ -204,26 +204,11 @@ b {
 
 .landing .brand {
   margin-bottom: 85px;
-  position: relative;
-  z-index: 999;
-  transition: color 2.9s;
+  display: block;
 }
 
-.landing .brand.is-colored {
+.brand.is-colored {
   color:#80D0F3;
-}
-
-.landing .brand__sun {
-  font-size: 40px;
-  vertical-align: middle;
-  display: inline-block;
-  margin-top: -8px;
-  animation: sunUp 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.landing .brand__name {
-  opacity: 0;
-  animation: fadeIn 2s 1.5s forwards;
 }
 
 .landing .text {
@@ -328,6 +313,7 @@ b {
 
 .landing .text-medium {
   font-size: 1.5rem;
+  line-height: 1.333333333;
 }
 
 @media (max-width: 600px) {
