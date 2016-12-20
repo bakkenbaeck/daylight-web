@@ -26,6 +26,7 @@ class App {
       this.rootElement.classList.add(`theme-${this.sunObject.theme}`);
     }
     
+    this.update();
     this.startInterval();
     this._addEventListener();
     this._checkUserLocation();

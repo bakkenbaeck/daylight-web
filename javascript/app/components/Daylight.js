@@ -15,6 +15,7 @@ class Daylight {
     if (position.x <= 0 && position.y <= 0) {
       if (this.visibleSun) {
         this.visibleSun = false;
+        this.sun.removeAttribute('style');
         this.sun.classList.remove('show-time');
       }
     } else {
