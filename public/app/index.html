@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-daylight">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sol</title>
+    <link rel="preload" href="/GT-America-Light.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/icons/touch-icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/touch-icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/touch-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/touch-icon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/touch-icon-180.png">
+    <script>
+      var fontDisplaySupport = false;
+      try {
+        var e = document.createElement("style");
+        e.textContent = "@font-face { font-display: swap; }";
+        document.documentElement.appendChild(e);
+        fontDisplaySupport = e.sheet.cssRules[0].cssText.indexOf("font-display") != -1;
+        e.remove();
+      } catch (ex) {}
+
+      if (!fontDisplaySupport && 'fonts' in document) {
+        new FontFace('GT America', 'url("/GT-America-Light.woff") format("woff")', { weight: 300 }).load().then(function(event) {
+          document.documentElement.classList.add('wf-loaded');
+        });
+      } else {
+        document.documentElement.className = 'wf-loaded';
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app" id="app" data-location='{{location}}'>
+      <a class="sun sun--main sun--left muted" href="/"><h1 class="text-small">Daylight</h1></a>
+      <div class="horizon app__main js-horizon is-hidden">
+        <div class="horizon__sky" aria-hidden="true">
+          <div class="horizon__sky-wrap">
+            <span class="horizon__sun sun sun--bottom js-sun"></span>
+          </div>
+        </div>
+        <div class="horizon__line">
+          <time class="js-sunrise" title="Sunrise"></time>
+          <time class="js-sunset" title="Sunset"></time>  
+        </div>
+      </div>
+      <p class="text js-sentence"></p>
+      <p class="app__fotter text-small muted js-location"></p>
+    </main>
+    <script src="/index.js"></script>
+  </body>
+</html>

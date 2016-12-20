@@ -11,7 +11,7 @@ let index = '';
 
 cacheIndex();
 
-app.get('/', (req, res) => {
+app.get('/app', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   replaceContent(geoip.allData(ip)).then(html => res.send(html))
 });
@@ -21,7 +21,7 @@ function replaceContent(location) {
 }
 
 function cacheIndex() {
-  fs.readFile(path.resolve(__dirname, '../public/index.html'), 'utf8').then(html => {
+  fs.readFile(path.resolve(__dirname, '../public/app/index.html'), 'utf8').then(html => {
     index = html;
   })
 }

@@ -1,6 +1,6 @@
 {
   "name": "Sol",
-  "start_url": "/",
+  "start_url": "/app",
   "orientation": "portrait",
   "display": "standalone",
   "icons": [

@@ -323,7 +323,7 @@ b {
   width: 18px;
   height: 18px;
   position: absolute;
-  background: url('landing/icon-arrow.svg') no-repeat center center;
+  background: url('/assets/icon-arrow.svg') no-repeat center center;
 }
 
 .landing .text-medium {
@@ -376,7 +376,7 @@ b {
   transform: translate3d(0,0,0);
 }
 
-.text, .text-medium, .apps, .landing__footer {
+.landing .text, .text-medium, .apps, .landing__footer {
   opacity: 0;
   animation: fadeIn 2.3s 2.55s forwards;
 }
