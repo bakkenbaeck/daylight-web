@@ -12,10 +12,16 @@ let index = '';
 cacheIndex();
 
 app.get('/app', (req, res) => {
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  
+  let ipAddr = req.headers["x-forwarded-for"];
+  if (ipAddr){
+    const list = ipAddr.split(",");
+    ipAddr = list[list.length-1];
+  } else {
+    ipAddr = req.connection.remoteAddress;
+  }
+
   try {
-    const location = geoip.allData(ip);
+    const location = geoip.allData(ipAddr);
     replaceContent(location).then(html => res.send(html))
   } catch(e) {
     replaceContent().then(html => res.send(html))
