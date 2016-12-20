@@ -10,7 +10,13 @@ const getUserLocation = () => {
       .catch(() => {
         const location = document.getElementById('app').dataset.location;
         if (location) {
-          resolve(JSON.parse(location));
+          const [city, country,latitude,longitude] = location.split(':'); 
+          resolve({
+            city, country,
+            location: {
+              latitude,longitude
+            }
+          });
         } else {
           reject();
         }
@@ -25,9 +31,3 @@ getUserLocation().then(userLocation => {
     app.bootstrap(userLocation);
   });
 });
-
-/*
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
-*/

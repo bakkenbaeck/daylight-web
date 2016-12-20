@@ -23,13 +23,14 @@ app.get('/app', (req, res) => {
   let location = null;
   try {
     location = geoip.allData(ipAddr);
+    location = `${location.city}:${location.country}:${location.location.latitude}:${location.location.longitude}`;
   } catch(e) {}
     
   replaceContent(location).then(html => res.send(html));
 });
 
 function replaceContent(location = null) {
-  return new Promise(resolve => resolve(index.replace('[[location]]', JSON.stringify(location))));
+  return new Promise(resolve => resolve(index.replace('[[location]]', location)));
 }
 
 function cacheIndex() {
