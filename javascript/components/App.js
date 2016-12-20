@@ -3,22 +3,25 @@ import Daylight from './Daylight';
 import Store from '../utils/Store';
 
 class App {
-  constructor(userLocation) {
-    this.now = new Date();
+  constructor() {
+    this.now = null;
     this.timeInterval = null;
-    this.userLocation = userLocation;
+    this.userLocation = null;
     this.rootElement = document.documentElement;
     this.horizon = document.querySelector('.js-horizon');
 
     this.daylight = new Daylight();
     
-    this.sunObject = getDay(this.now, this.userLocation.location);
+    this.sunObject = null;
     
     this.update = this.update.bind(this);
     this.onVisibilitychange = this.onVisibilitychange.bind(this);
   }
 
-  bootstrap() {
+  bootstrap(userLocation) {
+    this.now = new Date();
+    this.userLocation = userLocation;
+    this.sunObject = getDay(this.now, this.userLocation.location);
     this.daylight.render(this.sunObject, this.userLocation);
     this.horizon.classList.remove('is-hidden');
 
@@ -103,7 +106,7 @@ class App {
       city: null,
       country: null,
     }
-
+    
     return new Promise((resolve, reject) => {
       const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.latitude}&lon=${location.longitude}&addressdetails=1`;
       this.request = new XMLHttpRequest();
