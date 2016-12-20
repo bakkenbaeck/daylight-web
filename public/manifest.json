@@ -2,5 +2,37 @@
   "name": "Sol",
   "start_url": "/",
   "orientation": "portrait",
-  "display": "standalone"
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/icons/rounded-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/icons/rounded-72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/icons/rounded-96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/icons/rounded-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/icons/rounded-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/rounded-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
