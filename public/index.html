@@ -26,7 +26,7 @@
       } catch (ex) {}
 
       if (!fontDisplaySupport && 'fonts' in document) {
-        new FontFace('GT America Mono', 'url("/fonts/GT-America-Light.woff") format("woff")', { weight: 300 }).load().then(function(event) {
+        new FontFace('GT America', 'url("/fonts/GT-America-Light.woff") format("woff")', { weight: 300 }).load().then(function(event) {
           document.documentElement.classList.add('wf-loaded');
         });
       } else {
