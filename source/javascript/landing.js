@@ -16,7 +16,7 @@ if (hour >= 7 && hour < 8) {
 }
 
 // Apply the theme to html
-document.documentElement.classList.add('theme-' + theme);
+document.documentElement.classList.add('theme-' + theme, 'landing-transition');
 
 // since animating to color: inherit does not work on safari we gotta toggle a class instead
 setTimeout(() => {
