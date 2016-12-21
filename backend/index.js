@@ -25,8 +25,13 @@ app.get('/app', (req, res) => {
     location = geoip.allData(ipAddr);
     location = `${location.city}:${location.country}:${location.location.latitude}:${location.location.longitude}`;
   } catch(e) {}
-    
+
   replaceContent(location).then(html => res.send(html));
+});
+
+// lets encrypt cert endpoint
+app.get('/.well-known/acme-challenge/:content', (req, res) => {
+  res.send(process.env.LETSENCRYPT_TOKEN);
 });
 
 function replaceContent(location = null) {
