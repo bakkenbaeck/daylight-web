@@ -1,6 +1,6 @@
 'use strict';
 
-const version = 'daylight-1';
+const version = 'daylight-1.1';
 
 self.addEventListener('install', event => {
   self.skipWaiting();
