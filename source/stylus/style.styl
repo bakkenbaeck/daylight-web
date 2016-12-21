@@ -254,6 +254,12 @@ b {
   }
 }
 
+@media (max-width: 320px) {
+  .landing .text {
+    font-size: 1.35rem;
+  }
+}
+
 .landing ul {
   list-style-type: none;
   margin: 0;
@@ -295,12 +301,25 @@ b {
 
   .landing .apps__item {
     width: 25vw;
-    text-align: center;
+  }
+
+  .landing .app-cta {
+    font-size: 14px;
   }
 
   .landing .app-icon {
     width: 25vw;
     height: 25vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .landing .apps__item {
+    font-size: 0.9rem;
+  }
+
+  .landing .app-cta {
+    font-size: 12px;
   }
 }
 
@@ -332,6 +351,12 @@ b {
   }
 }
 
+@media (max-width: 320px) {
+  .landing .text-medium {
+    font-size: 1rem;
+  }
+}
+
 .landing .text-medium span {
   opacity: 0.5;
 }
@@ -351,6 +376,12 @@ b {
   }
 }
 
+@media (max-width: 320px) {
+  .landing__footer {
+    font-size: 0.8rem;
+  }
+}
+
 .landing a {
   transition: opacity 0.5s;
 }
@@ -361,6 +392,7 @@ b {
 
 .landing-transition {
   background: #031320;
+  font-size: 16px; // for easy REM sizing on landing
 }
 
 .landing-transition body:after {
