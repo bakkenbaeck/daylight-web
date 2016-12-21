@@ -1,5 +1,5 @@
 const leftPad = (int) => int >= 10 ? int : '0' + int;
-const timeFormatter = date => `${leftPad(date.getHours())}:${leftPad(date.getMinutes())}`;
+const timeFormatter = date => `${leftPad(date.getHours() ? date.getHours() : 0)}:${leftPad(date.getMinutes() ? date.getMinutes() : 0)}`;
 
 const generateSentence = (daylight, theme) => {
 

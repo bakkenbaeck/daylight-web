@@ -11,6 +11,7 @@ class Daylight {
   }
 
   setSunPosition(time, position) {
+    if (!position.x && !position.y) { return; }
     if (position.x <= 0 && position.y <= 0) {
       if (this.visibleSun) {
         this.visibleSun = false;
