@@ -1,6 +1,9 @@
 {
-  "name": "Sol",
+  "name": "Daylight",
   "start_url": "/app",
+  "theme_color": "#000",
+  "background_color": "#FFDC9C",
+  "description": "An app that tells you about daylight changes",
   "orientation": "portrait",
   "display": "standalone",
   "icons": [
