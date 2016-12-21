@@ -128,7 +128,7 @@ class App {
       if (location.city !== this.userLocation.city) {
         this.userLocation = location;
         this.sunObject = getDay(this.now, this.userLocation.location);
-        this.daylight.render(this.sunObject, this.location);
+        this.daylight.render(this.sunObject, this.userLocation);
       } else {
         this.userLocation = location;
       }

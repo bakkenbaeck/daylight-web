@@ -36,10 +36,12 @@ class Daylight {
 
   setLocation(location) {
     let locationString = '';
-    if (location.city) {
+    if (location.city && location.country) {
       locationString = `${location.city}, ${location.country}`;
-    } else {
+    } else if (location.country) {
       locationString = `Somewhere in ${location.country}`;
+    } else {
+      locationString = 'Unknown location';
     }
     this.location.textContent = locationString;
   }
