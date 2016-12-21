@@ -318,20 +318,12 @@ b {
   position: relative;
 }
 
-.landing .apps__item:nth-child(1) .app-cta:after {
+.landing .apps__item:nth-child(1) svg {
   transform: rotate(-135deg);
 }
 
-.landing .apps__item:nth-child(2) .app-cta:after {
-  display: none;
-}
-
-.landing .app-cta:after {
-  content: '';
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  background: url('/assets/icon-arrow.svg') no-repeat center center;
+.landing .app-cta svg {
+  vertical-align: middle;
 }
 
 .landing .text-medium {
@@ -371,6 +363,10 @@ b {
   opacity: 0.7;
 }
 
+.landing-transition {
+  background: #031320;
+}
+
 .landing-transition body:after {
   content: '';
   position: fixed;
@@ -387,6 +383,20 @@ b {
 .landing .text, .text-medium, .apps, .landing__footer {
   opacity: 0;
   animation: fadeIn 2.3s 2.55s forwards;
+}
+
+.theme-sunrise .landing path {
+  fill: #EA5700;
+}
+.theme-daylight .landing path,
+.theme-sunset .landing path {
+  fill: #AB4621;
+}
+.theme-twilight .landing path {
+  fill: #3C57A0;
+}
+.theme-night .landing path {
+  fill: #80D0F3;
 }
 
 @keyframes bgTransition {

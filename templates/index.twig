@@ -7,11 +7,11 @@
     </a>
 
     <p class="text">
-      Daylight is a simple app that notifies you when the days are getting longer.
+      Daylight is a simple app that tells you about daylight changes and notifies you when the days are getting longer.
     </p>
 
     <p class="text">
-      Perfect for those dark and long winters of the north.
+      The perfect assistant for the long and dark winters of the north.
     </p>
 
     <nav class="apps">
@@ -25,7 +25,10 @@
 
             <figcaption>
               <h2 class="app-title">Web app</h2>
-              <p class="app-cta">Open app</p>
+              <p class="app-cta">
+                Open app
+                {{ svg.inline({ name: "icon-arrow" }) }}
+              </p>
             </figcaption>
           </a>
         </li>
@@ -53,7 +56,10 @@
 
             <figcaption>
               <h2 class="app-title">Android app</h2>
-              <p class="app-cta">Get the app</p>
+              <p class="app-cta">
+                Get the app
+                {{ svg.inline({ name: "icon-arrow" }) }}
+              </p>
             </figcaption>
           </a>
         </li>
@@ -62,12 +68,11 @@
 
     <p class="text-medium">
       <!--We're using spans here so we can just inherit theme color and set opacity on these lighter text-->
-      <span>An experiment by </span>
+      <span>Daylight is made by </span>
       <a href="http://bakkenbaeck.com">Bakken &amp; Bæck.</a>
-      <span>Read more about it </span>
-      <a href="#">here.</a>
-      <span> Daylight is open sourced for </span>
-      <a href="">Android</a>, <a href="#">iOS</a> and <a href="#">web</a>.
+      <span>Read the </span>
+      <a href="#">story</a>
+      <span> behind it on Medium.</span>
     </p>
 
     <footer class="landing__footer">
@@ -75,7 +80,13 @@
       <a href="http://www.suncalc.org/">SunCalc</a>
       <span> for the API and </span>
       <a href="https://www.grillitype.com/">Grilli Type</a>
-      <span> for the nice type.</span>
+      <span> for the nice letters.</span>
+      <br/>
+      <span>Daylight is open sourced for </span>
+      <a href="">Android</a>
+      <span> and</span>
+      <a href="">iOS</a>
+      <span> (web coming soon).</span>
     </footer>
   </main>
 
