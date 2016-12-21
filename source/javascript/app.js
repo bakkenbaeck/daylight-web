@@ -9,7 +9,7 @@ const getUserLocation = () => {
       .then(location => resolve(location))
       .catch(() => {
         const location = document.getElementById('app').dataset.location;
-        if (location) {
+        if (location !== 'null') {
           const [city, country,latitude,longitude] = location.split(':'); 
           resolve({
             city, country,
