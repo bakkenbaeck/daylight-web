@@ -23,7 +23,7 @@ module.exports = {
       "options": {}
     },
     "filerev": {
-      "ignore": []
+      "ignore": ["icons/*.png"]
     },
     "clean": {
       "ignore": []
