@@ -35,7 +35,13 @@ class Daylight {
   }
 
   setLocation(location) {
-    this.location.textContent = `${location.city}, ${location.country}`; 
+    let locationString = '';
+    if (location.city) {
+      locationString = `${location.city}, ${location.country}`;
+    } else {
+      locationString = `Somewhere in ${location.country}`;
+    }
+    this.location.textContent = locationString;
   }
 
   updateTimes(sunObject) {
