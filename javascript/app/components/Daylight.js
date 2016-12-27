@@ -48,7 +48,7 @@ class Daylight {
     this.sunset.setAttribute('datetime', sunset);
   }
 
-  newDay(date, sunObject) {
+  render(date, sunObject) {
     this.updateSentence(sunObject.daylight, sunObject.theme);
     this.updateTimes(sunObject);
   }

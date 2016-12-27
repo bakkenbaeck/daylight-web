@@ -48,8 +48,8 @@ class App {
     }
 
     if (this.now.toDateString() !== now.toDateString()) {
-      daylight.newDay(now, sunObject);
-      this.now = date;
+      this.daylight.render(now, sunObject);
+      this.now = now;
       this.sunObject = sunObject;
     }
 
