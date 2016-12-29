@@ -10,13 +10,14 @@ class App {
     this.rootElement = document.documentElement;
     
     this.daylight = new Daylight();
-    this.sunObject = sunCalc.getDay(this.now, this.userLocation.locaton);
+    this.sunObject = sunCalc.getDay(this.now, this.userLocation.location);
     
     this.update = this.update.bind(this);
     this.onVisibilitychange = this.onVisibilitychange.bind(this);
   
     this.startInterval();
     this._addEventListener();
+    this._checkUserLocation();
   }
 
   _addEventListener() {
@@ -41,14 +42,14 @@ class App {
 
   update() {
     const now = new Date();
-    const sunObject = sunCalc.getDay(now, this.userLocation.locaton);
+    const sunObject = sunCalc.getDay(now, this.userLocation.location);
 
     if (sunObject.theme !== this.sunObject.theme) {
       this.updateTheme(this.sunObject, sunObject);
     }
 
     if (this.now.toDateString() !== now.toDateString()) {
-      this.daylight.render(now, sunObject);
+      this.daylight.render(sunObject);
       this.now = now;
       this.sunObject = sunObject;
     }
@@ -62,7 +63,7 @@ class App {
     this.rootElement.classList.add(`theme-${newSunobject.theme}`);
     
     if (this.sunObject.theme === 'night') {
-      this.updateSentence(this.sunObject.daylight, this.sunObject.theme);
+      this.daylight.updateSentence(this.sunObject.daylight, this.sunObject.theme);
     }
     
     this.sunObject = newSunobject;
@@ -83,8 +84,8 @@ class App {
   reverseGeocode(location) {
     const data = {
       location: {
-        latitude: location.latitude, 
-        longitude: location.longitude,
+        latitude: location.latitude,
+        longitude: location.longitude,  
       },
       city: null,
       country: null,
@@ -103,6 +104,20 @@ class App {
       this.request.open('GET', url, true);
       this.request.responseType = 'json';
       this.request.send();
+    });
+  }
+
+  _checkUserLocation() {
+    this.getUserLocation().then(location => {
+      if (location.city !== this.userLocation.city) {
+        this.userLocation = location;
+        this.sunObject = sunCalc.getDay(this.now, this.userLocation.location);
+        this.daylight.render(this.sunObject);
+        this.daylight.updateLocation(this.userLocation);
+      }
+      Store.set('userLocation', this.userLocation);
+    }).catch(() => {
+      Store.set('userLocation', this.userLocation);
     });
   }
 

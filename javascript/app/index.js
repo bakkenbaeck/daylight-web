@@ -3,7 +3,7 @@ import App from './components/App';
 const app = document.getElementById('app');
 const { latitude, longitude, city, country } = app.dataset;
 const userLocation = { 
-  locaton: { latitude, longitude },
+  location: { latitude, longitude },
   city, country,
 };
 

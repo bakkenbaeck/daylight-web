@@ -34,7 +34,7 @@ class Daylight {
   }
 
   updateLocation(location) {
-    this.location.textContent = `${ location.city }, ${ location.country }`; 
+    this.location.textContent = `${location.city}, ${location.country}`; 
   }
 
   updateTimes(sunObject) {
@@ -48,7 +48,7 @@ class Daylight {
     this.sunset.setAttribute('datetime', sunset);
   }
 
-  render(date, sunObject) {
+  render(sunObject) {
     this.updateSentence(sunObject.daylight, sunObject.theme);
     this.updateTimes(sunObject);
   }
