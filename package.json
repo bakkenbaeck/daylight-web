@@ -5,8 +5,11 @@
   "version": "2.1.0",
   "license": "MIT",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "eleventy"
+  },
   "dependencies": {
+    "@11ty/eleventy": "^0.11.1",
     "idb": "^2.0.0",
     "suncalc": "^1.7.0"
   }
