@@ -12,6 +12,7 @@
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
     "idb": "^2.0.0",
-    "suncalc": "^1.7.0"
+    "suncalc": "^1.7.0",
+    "terser": "^5.5.1"
   }
 }

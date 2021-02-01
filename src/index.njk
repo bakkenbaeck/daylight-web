@@ -1,75 +1,79 @@
 ---
-layout: layout.njk
+  layout: layout.njk
 ---
 
-{% block content %}
-  <main class="landing">
-    <a class="sun sun--main sun--left is-colored">
-      <h1 class="text-small">Daylight</h1>
-    </a>
+{% set js %}
+{% include "landing.js" %}
+{% endset %}
 
-    <p class="text">
-      Daylight is a simple app that tells you about daylight changes and notifies you when the days are getting longer.
-    </p>
+<script>
+  {{ js | jsmin | safe }}
+</script>
 
-    <p class="text">
-      The perfect assistant for the long and dark winters of the north.
-    </p>
+<main class="landing">
+  <a class="sun sun--main sun--left is-colored">
+    <h1 class="text-small">Daylight</h1>
+  </a>
 
-    <nav class="apps">
-      <ul>
-        {% for app in apps %}
-          <li class="apps__item">
-            <a href="{{ app.url }}" {% if app.external %} target="_blank" {% endif %}>
-              <figure class="app-icon">
-                <img src="{{app.image}}"/>
-              </figure>
+  <p class="text">
+    Daylight is a simple app that tells you about daylight changes and notifies you when the days are getting longer.
+  </p>
 
-              <figcaption>
-                <h2 class="app-title">{{ app.title }}</h2>
-                <p class="app-cta">
-                  {{ app.cta }}
-                  {% include "icon-arrow.svg" %}
-                </p>
-              </figcaption>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
+  <p class="text">
+    The perfect assistant for the long and dark winters of the north.
+  </p>
 
-    <p class="text-medium">
-      {# We're using spans here so we can just inherit theme color and set opacity on these lighter text #}
-      <span>Daylight is made by
-      </span>
-      <a href="http://bakkenbaeck.com">Bakken &amp; Bæck.</a>
-      <br/>
-      <span>Read the story behind it on
-      </span>
-      <a href="https://medium.com/@kristianhjelle/let-there-be-daylight-2fc3a8448ea#.79xp7vhfu" target="_blank">Medium.</a>
-    </p>
+  <nav class="apps">
+    <ul>
+      {% for app in apps %}
+        <li class="apps__item">
+          <a href="{{ app.url }}" {% if app.external %} target="_blank" {% endif %}>
+            <figure class="app-icon">
+              <img src="{{app.image}}"/>
+            </figure>
 
-    <footer class="landing__footer">
-      <span>Shoutout to
-      </span>
-      <a href="http://www.suncalc.org/" target="_blank">SunCalc</a>
-      <span>
-        for the API and
-      </span>
-      <a href="https://www.grillitype.com/" target="_blank">Grilli Type</a>
-      <span>
-        for the nice letters.
-      </span>
-      <span>Daylight is open sourced for
-      </span>
-      <a href="https://github.com/bakkenbaeck/daylight-android" target="_blank">Android</a>
-      <span>
-        and</span>
-      <a href="https://github.com/bakkenbaeck/daylight-ios" target="_blank">iOS</a>
-      <span>
-        (web coming soon).</span>
-    </footer>
-  </main>
+            <figcaption>
+              <h2 class="app-title">{{ app.title }}</h2>
+              <p class="app-cta">
+                {{ app.cta }}
+                {% include "icon-arrow.svg" %}
+              </p>
+            </figcaption>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
 
-  <script src="/landing.js"></script>
-{% endblock %}
+  <p class="text-medium">
+    {# We're using spans here so we can just inherit theme color and set opacity on these lighter text #}
+    <span>Daylight is made by
+    </span>
+    <a href="http://bakkenbaeck.com">Bakken &amp; Bæck.</a>
+    <br/>
+    <span>Read the story behind it on
+    </span>
+    <a href="https://medium.com/@kristianhjelle/let-there-be-daylight-2fc3a8448ea#.79xp7vhfu" target="_blank">Medium.</a>
+  </p>
+
+  <footer class="landing__footer">
+    <span>Shoutout to
+    </span>
+    <a href="http://www.suncalc.org/" target="_blank">SunCalc</a>
+    <span>
+      for the API and
+    </span>
+    <a href="https://www.grillitype.com/" target="_blank">Grilli Type</a>
+    <span>
+      for the nice letters.
+    </span>
+    <span>Daylight is open sourced for
+    </span>
+    <a href="https://github.com/bakkenbaeck/daylight-android" target="_blank">Android</a>
+    <span>
+      and</span>
+    <a href="https://github.com/bakkenbaeck/daylight-ios" target="_blank">iOS</a>
+    <span>
+      (web coming soon).</span>
+  </footer>
+</main>
