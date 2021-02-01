@@ -18,56 +18,23 @@ layout: layout.njk
 
     <nav class="apps">
       <ul>
-        {# Web #}
-        <li class="apps__item">
-          <a href="/app">
-            <figure class="app-icon">
-              <img src="/assets/icon-web.png"/>
-            </figure>
+        {% for app in apps %}
+          <li class="apps__item">
+            <a href="{{ app.url }}" {% if app.external %} target="_blank" {% endif %}>
+              <figure class="app-icon">
+                <img src="{{app.image}}"/>
+              </figure>
 
-            <figcaption>
-              <h2 class="app-title">Web app</h2>
-              <p class="app-cta">
-                Open app
-                {% include "icon-arrow.svg" %}
-              </p>
-            </figcaption>
-          </a>
-        </li>
-
-        {# iPhone #}
-        <li class="apps__item">
-          <a href="https://itunes.apple.com/us/app/daylight-for-iphone/id1187597286?ls=1&mt=8" target="_blank">
-            <figure class="app-icon">
-              <img src="/assets/icon-ios.png"/>
-            </figure>
-
-            <figcaption>
-              <h2 class="app-title">iPhone app</h2>
-              <p class="app-cta">
-                Get the app
-                {% include "icon-arrow.svg" %}
-              </p>
-            </figcaption>
-          </a>
-        </li>
-
-        {# Android #}
-        <li class="apps__item">
-          <a href="https://play.google.com/store/apps/details?id=com.bakkenbaeck.sol" target="_blank">
-            <figure class="app-icon">
-              <img src="/assets/icon-android.png"/>
-            </figure>
-
-            <figcaption>
-              <h2 class="app-title">Android app</h2>
-              <p class="app-cta">
-                Get the app
-                {% include "icon-arrow.svg" %}
-              </p>
-            </figcaption>
-          </a>
-        </li>
+              <figcaption>
+                <h2 class="app-title">{{ app.title }}</h2>
+                <p class="app-cta">
+                  {{ app.cta }}
+                  {% include "icon-arrow.svg" %}
+                </p>
+              </figcaption>
+            </a>
+          </li>
+        {% endfor %}
       </ul>
     </nav>
 
