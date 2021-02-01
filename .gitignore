@@ -1,20 +1,3 @@
-# OS X stuff
 .DS_Store
-
-# NPM/Node
 node_modules
-npm-debug.log
-
-# Contour
-templates/_svg
-
-# Folders
-public/*
-.db_version
-
-# Craft specific
-!public/*.php
-
-# Python
-*~
-*pyc
+_site
