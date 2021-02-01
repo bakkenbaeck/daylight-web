@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "eleventy"
+    "start": "ELEVENTY_ENV=development eleventy  --watch --serve",
+    "build": "ELEVENTY_ENV=production eleventy"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
