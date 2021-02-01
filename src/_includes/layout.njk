@@ -1,5 +1,3 @@
-{% import "../_svg/utils.twig" as svg %}
-
 <!DOCTYPE html>
 <html lang="en" class="theme-daylight">
   <head>
@@ -8,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#000">
     <title>Daylight</title>
-    <link rel="preload" href="/GT-America-Light.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="/GT-America-Light.woff" as="font" type="font/woff" crossorigin="crossorigin">
     <link rel="stylesheet" href="/style.css">
     <link rel="manifest" href="/manifest.json">
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="/icons/touch-icon-60.png">
@@ -24,34 +22,60 @@
       try {
         var e = document.createElement("style");
         e.textContent = "@font-face { font-display: swap; }";
-        document.documentElement.appendChild(e);
-        fontDisplaySupport = e.sheet.cssRules[0].cssText.indexOf("font-display") != -1;
+        document
+          .documentElement
+          .appendChild(e);
+        fontDisplaySupport = e
+          .sheet
+          .cssRules[0]
+          .cssText
+          .indexOf("font-display") != -1;
         e.remove();
       } catch (ex) {}
 
       if (!fontDisplaySupport && 'fonts' in document) {
-        new FontFace('GT America', 'url("/GT-America-Light.woff") format("woff")', { weight: 300 }).load().then(function(event) {
-          document.documentElement.classList.add('wf-loaded');
-        });
+        new FontFace('GT America', 'url("/GT-America-Light.woff") format("woff")', {weight: 300})
+          .load()
+          .then(function (event) {
+            document
+              .documentElement
+              .classList
+              .add('wf-loaded');
+          });
       } else {
-        document.documentElement.classList.add('wf-loaded');
+        document
+          .documentElement
+          .classList
+          .add('wf-loaded');
       }
     </script>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    {{ content | safe }}
     <script>
       {% if contour.env == "prod" %}
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          },
+          i[r].l = 1 * new Date();
+          a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m
+            .parentNode
+            .insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-89319808-1', 'auto');
         ga('send', 'pageview');
       {% endif %}
 
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js');
+        navigator
+          .serviceWorker
+          .register('/sw.js');
       }
     </script>
   </body>

@@ -1,6 +1,8 @@
-{% extends "_layout/main.twig" %}
-{% block content %}
+---
+layout: layout.njk
+---
 
+{% block content %}
   <main class="landing">
     <a class="sun sun--main sun--left is-colored">
       <h1 class="text-small">Daylight</h1>
@@ -16,52 +18,52 @@
 
     <nav class="apps">
       <ul>
-        <!--Web-->
+        {# Web #}
         <li class="apps__item">
           <a href="/app">
             <figure class="app-icon">
-              <img src="/assets/icon-web.png" />
+              <img src="/assets/icon-web.png"/>
             </figure>
 
             <figcaption>
               <h2 class="app-title">Web app</h2>
               <p class="app-cta">
                 Open app
-                {{ svg.inline({ name: "icon-arrow" }) }}
+                {% include "icon-arrow.svg" %}
               </p>
             </figcaption>
           </a>
         </li>
 
-        <!--iPhone-->
+        {# iPhone #}
         <li class="apps__item">
           <a href="https://itunes.apple.com/us/app/daylight-for-iphone/id1187597286?ls=1&mt=8" target="_blank">
             <figure class="app-icon">
-              <img src="/assets/icon-ios.png" />
+              <img src="/assets/icon-ios.png"/>
             </figure>
 
             <figcaption>
               <h2 class="app-title">iPhone app</h2>
               <p class="app-cta">
                 Get the app
-                {{ svg.inline({ name: "icon-arrow" }) }}
+                {% include "icon-arrow.svg" %}
               </p>
             </figcaption>
           </a>
         </li>
 
-        <!--Android-->
+        {# Android #}
         <li class="apps__item">
           <a href="https://play.google.com/store/apps/details?id=com.bakkenbaeck.sol" target="_blank">
             <figure class="app-icon">
-              <img src="/assets/icon-android.png" />
+              <img src="/assets/icon-android.png"/>
             </figure>
 
             <figcaption>
               <h2 class="app-title">Android app</h2>
               <p class="app-cta">
                 Get the app
-                {{ svg.inline({ name: "icon-arrow" }) }}
+                {% include "icon-arrow.svg" %}
               </p>
             </figcaption>
           </a>
@@ -70,25 +72,35 @@
     </nav>
 
     <p class="text-medium">
-      <!--We're using spans here so we can just inherit theme color and set opacity on these lighter text-->
-      <span>Daylight is made by </span>
+      {# We're using spans here so we can just inherit theme color and set opacity on these lighter text #}
+      <span>Daylight is made by
+      </span>
       <a href="http://bakkenbaeck.com">Bakken &amp; Bæck.</a>
-      <br />
-      <span>Read the story behind it on </span>
+      <br/>
+      <span>Read the story behind it on
+      </span>
       <a href="https://medium.com/@kristianhjelle/let-there-be-daylight-2fc3a8448ea#.79xp7vhfu" target="_blank">Medium.</a>
     </p>
 
     <footer class="landing__footer">
-      <span>Shoutout to </span>
+      <span>Shoutout to
+      </span>
       <a href="http://www.suncalc.org/" target="_blank">SunCalc</a>
-      <span> for the API and </span>
+      <span>
+        for the API and
+      </span>
       <a href="https://www.grillitype.com/" target="_blank">Grilli Type</a>
-      <span> for the nice letters. </span>
-      <span>Daylight is open sourced for </span>
+      <span>
+        for the nice letters.
+      </span>
+      <span>Daylight is open sourced for
+      </span>
       <a href="https://github.com/bakkenbaeck/daylight-android" target="_blank">Android</a>
-      <span> and</span>
+      <span>
+        and</span>
       <a href="https://github.com/bakkenbaeck/daylight-ios" target="_blank">iOS</a>
-      <span> (web coming soon).</span>
+      <span>
+        (web coming soon).</span>
     </footer>
   </main>
 
