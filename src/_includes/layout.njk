@@ -17,38 +17,6 @@
     <link rel="apple-touch-icon" sizes="120x120" href="/icons/touch-icon-120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/icons/touch-icon-152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/touch-icon-180.png">
-    <script>
-      var fontDisplaySupport = false;
-      try {
-        var e = document.createElement("style");
-        e.textContent = "@font-face { font-display: swap; }";
-        document
-          .documentElement
-          .appendChild(e);
-        fontDisplaySupport = e
-          .sheet
-          .cssRules[0]
-          .cssText
-          .indexOf("font-display") != -1;
-        e.remove();
-      } catch (ex) {}
-
-      if (!fontDisplaySupport && 'fonts' in document) {
-        new FontFace('GT America', 'url("/GT-America-Light.woff") format("woff")', {weight: 300})
-          .load()
-          .then(function (event) {
-            document
-              .documentElement
-              .classList
-              .add('wf-loaded');
-          });
-      } else {
-        document
-          .documentElement
-          .classList
-          .add('wf-loaded');
-      }
-    </script>
   </head>
   <body>
     {{ content | safe }}
