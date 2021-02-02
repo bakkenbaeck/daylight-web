@@ -2,24 +2,22 @@
 layout: layout.njk
 ---
 
-{% block content %}
-  <main class="app" id="app" data-location="[[location]]">
-    <a class="sun sun--main sun--left muted" href="/">
-      <h1 class="text-small">Daylight</h1>
-    </a>
-    <div class="horizon app__main js-horizon is-hidden">
-      <div class="horizon__sky" aria-hidden="true">
-        <div class="horizon__sky-wrap">
-          <span class="horizon__sun sun sun--bottom js-sun"></span>
-        </div>
-      </div>
-      <div class="horizon__line">
-        <time class="js-sunrise" title="Sunrise"></time>
-        <time class="js-sunset" title="Sunset"></time>
+<main class="app" id="app">
+  <a class="sun sun--main sun--left muted" href="/">
+    <h1 class="text-small">Daylight</h1>
+  </a>
+  <div class="horizon app__main js-horizon is-hidden">
+    <div class="horizon__sky" aria-hidden="true">
+      <div class="horizon__sky-wrap">
+        <span class="horizon__sun sun sun--bottom js-sun"></span>
       </div>
     </div>
-    <p class="text js-sentence"></p>
-    <p class="app__fotter text-small muted js-location"></p>
-  </main>
-  <script src="/app.js" async="async"></script>
-{% endblock %}
+    <div class="horizon__line">
+      <time class="js-sunrise" title="Sunrise"></time>
+      <time class="js-sunset" title="Sunset"></time>
+    </div>
+  </div>
+  <p class="text js-sentence"></p>
+  <p class="app__fotter text-small muted js-location"></p>
+</main>
+<script src="{{ paths['app.js'] }}" async="async"></script>
