@@ -1,32 +1,34 @@
-import {timeFormatter, generateSentence} from '../utils/utils';
+import { timeFormatter, generateSentence } from "../utils/utils";
 
 class Daylight {
   constructor() {
-    this.sun = document.querySelector('.js-sun');
-    this.sentence = document.querySelector('.js-sentence');
-    this.location = document.querySelector('.js-location');
-    this.sunrise = document.querySelector('.js-sunrise');
-    this.sunset = document.querySelector('.js-sunset');
-    this.sunVisible = this.sun.classList.contains('show-time');
+    this.sun = document.querySelector(".js-sun");
+    this.sentence = document.querySelector(".js-sentence");
+    this.location = document.querySelector(".js-location");
+    this.sunrise = document.querySelector(".js-sunrise");
+    this.sunset = document.querySelector(".js-sunset");
+    this.sunVisible = this.sun.classList.contains("show-time");
   }
 
   setSunPosition(time, position) {
-    if (!position.x && !position.y) { return; }
+    if (!position.x && !position.y) {
+      return;
+    }
     if (position.x <= 0 && position.y <= 0) {
       if (this.visibleSun) {
         this.visibleSun = false;
-        this.sun.removeAttribute('style');
-        this.sun.classList.remove('show-time');
+        this.sun.removeAttribute("style");
+        this.sun.classList.remove("show-time");
       }
     } else {
       if (!this.visibleSun) {
         this.visibleSun = true;
-        this.sun.classList.add('show-time');
+        this.sun.classList.add("show-time");
       }
       requestAnimationFrame(() => {
         this.sun.dataset.time = timeFormatter(time);
         this.sun.style.bottom = `${position.y}%`;
-        this.sun.style.left = `${position.x}%`  ;
+        this.sun.style.left = `${position.x}%`;
       });
     }
   }
@@ -36,13 +38,13 @@ class Daylight {
   }
 
   setLocation(location) {
-    let locationString = '';
+    let locationString = "";
     if (location.city && location.country) {
       locationString = `${location.city}, ${location.country}`;
     } else if (location.country) {
       locationString = `Somewhere in ${location.country}`;
     } else {
-      locationString = 'Unknown location';
+      locationString = "Unknown location";
     }
     this.location.textContent = locationString;
   }
@@ -52,20 +54,19 @@ class Daylight {
     const sunset = timeFormatter(sunObject.sunset);
 
     this.sunrise.textContent = sunrise;
-    this.sunrise.setAttribute('datetime', sunrise);
+    this.sunrise.setAttribute("datetime", sunrise);
 
     this.sunset.textContent = sunset;
-    this.sunset.setAttribute('datetime', sunset);
+    this.sunset.setAttribute("datetime", sunset);
   }
 
   render(sunObject, location = null) {
     this.updateSentence(sunObject.daylight, sunObject.theme);
     this.updateTimes(sunObject);
     if (location) {
-      this.setLocation(location)
+      this.setLocation(location);
     }
   }
-
 }
 
-export default Daylight
+export default Daylight;

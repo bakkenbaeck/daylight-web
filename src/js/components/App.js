@@ -1,6 +1,6 @@
-import { getDay, getSunPosition } from '../utils/sun';
-import Daylight from './Daylight';
-import Store from '../utils/Store';
+import { getDay, getSunPosition } from "../utils/sun";
+import Daylight from "./Daylight";
+import Store from "../utils/Store";
 
 class App {
   constructor() {
@@ -8,12 +8,12 @@ class App {
     this.timeInterval = null;
     this.userLocation = null;
     this.rootElement = document.documentElement;
-    this.horizon = document.querySelector('.js-horizon');
+    this.horizon = document.querySelector(".js-horizon");
 
     this.daylight = new Daylight();
-    
+
     this.sunObject = null;
-    
+
     this.update = this.update.bind(this);
     this.onVisibilitychange = this.onVisibilitychange.bind(this);
   }
@@ -23,13 +23,13 @@ class App {
     this.userLocation = userLocation;
     this.sunObject = getDay(this.now, this.userLocation.location);
     this.daylight.render(this.sunObject, this.userLocation);
-    this.horizon.classList.remove('is-hidden');
+    this.horizon.classList.remove("is-hidden");
 
-    if (this.sunObject.theme !== 'daylight') {
+    if (this.sunObject.theme !== "daylight") {
       this.rootElement.classList.remove(`theme-daylight`);
       this.rootElement.classList.add(`theme-${this.sunObject.theme}`);
     }
-    
+
     this.update();
     this.startInterval();
     this._addEventListener();
@@ -37,7 +37,7 @@ class App {
   }
 
   _addEventListener() {
-    document.addEventListener('visibilitychange', this.onVisibilitychange);
+    document.addEventListener("visibilitychange", this.onVisibilitychange);
   }
 
   startInterval() {
@@ -50,7 +50,7 @@ class App {
   onVisibilitychange() {
     if (document.hidden) {
       clearInterval(this.timeInterval);
-    } else  {
+    } else {
       this.update();
       this.startInterval();
     }
@@ -70,28 +70,34 @@ class App {
       this.sunObject = sunObject;
     }
 
-    const position = (now - this.sunObject.sunrise) / (this.sunObject.sunset - this.sunObject.sunrise);
+    const position =
+      (now - this.sunObject.sunrise) /
+      (this.sunObject.sunset - this.sunObject.sunrise);
     this.daylight.setSunPosition(now, getSunPosition(position));
   }
 
   updateTheme(oldSunobject, newSunobject) {
     this.rootElement.classList.remove(`theme-${oldSunobject.theme}`);
     this.rootElement.classList.add(`theme-${newSunobject.theme}`);
-    
-    if (this.sunObject.theme === 'night') {
-      this.daylight.updateSentence(this.sunObject.daylight, this.sunObject.theme);
+
+    if (this.sunObject.theme === "night") {
+      this.daylight.updateSentence(
+        this.sunObject.daylight,
+        this.sunObject.theme
+      );
     }
-    
+
     this.sunObject = newSunobject;
   }
 
-  getUserLocation() {
+  getUserLocation() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
-        location => this.reverseGeocode(location.coords)
-          .then(location => resolve(location))
-          .catch(location => resolve(location)),
-        error => reject(error), 
+        (location) =>
+          this.reverseGeocode(location.coords)
+            .then((location) => resolve(location))
+            .catch((location) => resolve(location)),
+        (error) => reject(error),
         { enableHighAccuracy: false }
       );
     });
@@ -101,43 +107,44 @@ class App {
     const data = {
       location: {
         latitude: location.latitude,
-        longitude: location.longitude,  
+        longitude: location.longitude,
       },
       city: null,
       country: null,
-    }
-    
+    };
+
     return new Promise((resolve, reject) => {
       const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.latitude}&lon=${location.longitude}&addressdetails=1`;
       this.request = new XMLHttpRequest();
-      this.request.onload = event => {
+      this.request.onload = (event) => {
         const address = event.target.response.address;
         data.city = address.city;
         data.country = address.country;
         resolve(data);
-      }
-      this.request.onerror = event => reject(data);
-      this.request.open('GET', url, true);
-      this.request.responseType = 'json';
+      };
+      this.request.onerror = (event) => reject(data);
+      this.request.open("GET", url, true);
+      this.request.responseType = "json";
       this.request.send();
     });
   }
 
   _checkUserLocation() {
-    this.getUserLocation().then(location => {
-      if (location.city !== this.userLocation.city) {
-        this.userLocation = location;
-        this.sunObject = getDay(this.now, this.userLocation.location);
-        this.daylight.render(this.sunObject, this.userLocation);
-      } else {
-        this.userLocation = location;
-      }
-      Store.set('userLocation', this.userLocation);
-    }).catch(() => {
-      Store.set('userLocation', this.userLocation);
-    });
+    this.getUserLocation()
+      .then((location) => {
+        if (location.city !== this.userLocation.city) {
+          this.userLocation = location;
+          this.sunObject = getDay(this.now, this.userLocation.location);
+          this.daylight.render(this.sunObject, this.userLocation);
+        } else {
+          this.userLocation = location;
+        }
+        Store.set("userLocation", this.userLocation);
+      })
+      .catch(() => {
+        Store.set("userLocation", this.userLocation);
+      });
   }
-
 }
 
-export default App
+export default App;

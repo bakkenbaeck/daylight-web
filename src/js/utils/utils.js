@@ -1,11 +1,14 @@
-const leftPad = (int) => int >= 10 ? int : '0' + int;
-const timeFormatter = date => `${leftPad(date.getHours() ? date.getHours() : 0)}:${leftPad(date.getMinutes() ? date.getMinutes() : 0)}`;
+const leftPad = (int) => (int >= 10 ? int : "0" + int);
+const timeFormatter = (date) =>
+  `${leftPad(date.getHours() ? date.getHours() : 0)}:${leftPad(
+    date.getMinutes() ? date.getMinutes() : 0
+  )}`;
 
 const generateSentence = (daylight, theme) => {
+  const minutes =
+    theme === "night" ? daylight.tomorrow.minutes : daylight.today.minutes;
+  const minuteString = minutes > 1 ? "minutes" : "minute";
 
-  const minutes = theme === 'night' ? daylight.tomorrow.minutes : daylight.today.minutes;
-  const minuteString = minutes > 1 ? 'minutes' : 'minute';
-  
   const sentences = {
     day: {
       positive: {
@@ -40,7 +43,7 @@ const generateSentence = (daylight, theme) => {
           `<span class="muted">Sadly, today is a tiny bit shorter than yesterday. Enjoy it while it lasts!</span>`,
           `<span class="muted">Today is shorter than yesterday. But fear not, brighter times ahead!</span>`,
         ],
-      }
+      },
     },
     night: {
       positive: {
@@ -68,19 +71,18 @@ const generateSentence = (daylight, theme) => {
           `<span class="muted">Sadly, tomorrow will be a tiny bit shorter than today. Enjoy it while it lasts!</span>`,
           `<span class="muted">Tomorrow will be shorter than today. But fear not, brighter times ahead!</span>`,
         ],
-      }
-    }
-  } 
+      },
+    },
+  };
 
-
-  const phase = theme === 'night' ? 'night' : 'day';
-  const feeling = daylight[theme === 'night' ? 'tomorrow' : 'today'].positive ? 'positive' : 'negative';
-  const sunLength = minutes >= 1 ? 'minutes' : 'seconds';
+  const phase = theme === "night" ? "night" : "day";
+  const feeling = daylight[theme === "night" ? "tomorrow" : "today"].positive
+    ? "positive"
+    : "negative";
+  const sunLength = minutes >= 1 ? "minutes" : "seconds";
 
   let sentenceArray = sentences[phase][feeling][sunLength];
   return sentenceArray[Math.floor(Math.random() * sentenceArray.length)];
-}
+};
 
-
-
-export {timeFormatter, generateSentence}
+export { timeFormatter, generateSentence };

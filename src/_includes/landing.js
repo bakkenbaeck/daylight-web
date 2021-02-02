@@ -4,22 +4,21 @@ let theme;
 
 // Just average hour values -> theme
 if (hour >= 7 && hour < 8) {
-  theme = 'sunrise';
+  theme = "sunrise";
 } else if (hour >= 8 && hour < 17) {
-  theme = 'daylight';
+  theme = "daylight";
 } else if (hour >= 17 && hour < 18) {
-  theme = 'sunset';
+  theme = "sunset";
 } else if (hour >= 18 && hour < 24) {
-  theme = 'night';
+  theme = "night";
 } else if (hour == 24 || hour < 7) {
-  theme = 'twilight';
+  theme = "twilight";
 }
 
 // Apply the theme to html
-document.documentElement.classList.add('theme-' + theme, 'landing-transition');
+document.documentElement.classList.add("theme-" + theme, "landing-transition");
 
 // since animating to color: inherit does not work on safari we gotta toggle a class instead
 setTimeout(() => {
-  document.querySelector('.sun').classList.remove('is-colored');
+  document.querySelector(".sun").classList.remove("is-colored");
 }, 2900);
-

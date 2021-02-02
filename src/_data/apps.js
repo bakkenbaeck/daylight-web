@@ -10,7 +10,8 @@ module.exports = [
     title: "iPhone app",
     cta: "Get the app",
     image: "/assets/icon-ios.png",
-    url: "https://itunes.apple.com/us/app/daylight-for-iphone/id1187597286?ls=1&mt=8",
+    url:
+      "https://itunes.apple.com/us/app/daylight-for-iphone/id1187597286?ls=1&mt=8",
     external: true,
   },
   {
