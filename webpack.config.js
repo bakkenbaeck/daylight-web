@@ -1,14 +1,17 @@
 const path = require('path');
 
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/js/app.js',
+    landing: ['./src/css/base.css', './src/css/landing.css'],
+    app: ['./src/js/app.js', './src/css/base.css', './src/css/app.css'],
   },
   output: {
     path: path.resolve(__dirname, '_site'),
-    filename: process.env.ELEVENTY_ENV === 'production' ? '[name].[contenthash].js' : '[name].js'
+    filename: '[contenthash].js'
   },
   module: {
     rules: [
@@ -25,12 +28,23 @@ module.exports = {
             }]]
           }
         }
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, {loader: 'css-loader', options: { url: false }}]
       }
     ]
+  },
+  optimization: {
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin(),
+    ],
   },
   mode: process.env.ELEVENTY_ENV || 'production',
   devtool: 'source-map',
   plugins: [
+    new MiniCssExtractPlugin({ filename: '[contenthash].css' }),
     new WebpackManifestPlugin({
       fileName: path.resolve(__dirname, 'src/_data/paths.json'),
       publicPath: '/',

@@ -15,6 +15,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addWatchTarget("./src/js/**/*");
+  eleventyConfig.addWatchTarget("./src/css/**/*");
   eleventyConfig.addPassthroughCopy({"src/static": "."});
 
   return {

@@ -1,0 +1,61 @@
+.app {
+  max-width: 31.25rem;
+  min-height: 100vh;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.app__footer {
+  margin-top: 2rem;
+}
+.app__main {
+  margin-top: auto;
+}
+
+.horizon {
+  font-size: 0.75rem;
+  margin-bottom: 3rem;
+}
+.horizon__sky {
+  height: 180px;
+  padding-top: 1.5rem;
+  overflow: hidden;
+}
+.horizon__sky-wrap {
+  height: 100%;
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  position: relative;
+}
+.horizon__sun {
+  text-align: center;
+  width: 2rem;
+  height: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  transform: translate(-1rem, 1rem);
+}
+.show-time:after {
+  content: attr(data-time);
+  width: 100%;
+  margin-bottom: 0.625rem;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+.horizon__line {
+  border-top: 1px solid;
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.is-hidden {
+  opacity: 0;
+}

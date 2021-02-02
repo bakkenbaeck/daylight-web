@@ -1,0 +1,97 @@
+@font-face {
+  font-family: "GT America";
+  src: url("/GT-America-Light.woff") format('woff');
+  font-weight: 300;
+  font-display: swap;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: "GT America", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  background-color: currentColor;
+  min-height: 100vh;
+  margin: 0;
+}
+.theme-sunrise {
+  color: #ea5700;
+}
+.theme-sunrise body {
+  background-color: #ffed9e;
+}
+.theme-daylight,
+.theme-sunset {
+  color: #ab4621;
+}
+.theme-daylight body {
+  background-color: #ffdc9c;
+}
+.theme-sunset body {
+  background-color: #ffc3ad;
+}
+.theme-twilight {
+  color: #3c57a0;
+}
+.theme-twilight body {
+  background-color: #d0e5ff;
+}
+.theme-night {
+  color: #80d0f3;
+}
+.theme-night body {
+  background-color: #031320;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+b {
+  font-weight: inherit;
+}
+.muted {
+  opacity: 0.6;
+}
+.text {
+  font-size: 2rem;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  margin-top: 0;
+}
+.text-small {
+  font-size: 1rem;
+  font-weight: inherit;
+  line-height: 1;
+  display: inline-block;
+  margin: 0;
+}
+
+.sun {
+  position: relative;
+}
+.sun--main {
+  padding-left: 1.5rem;
+}
+.sun:before {
+  content: "";
+  background-color: currentColor;
+  border-radius: 100%;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+}
+.sun--bottom:before {
+  margin-left: -0.5rem;
+  bottom: 0;
+  left: 50%;
+}
+.sun--left:before {
+  top: calc(50% - 0.5rem);
+  left: 0;
+}
