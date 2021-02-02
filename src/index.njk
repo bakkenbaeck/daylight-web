@@ -27,7 +27,7 @@
     <ul>
       {% for app in apps %}
         <li class="apps__item">
-          <a href="{{ app.url }}" {% if app.external %} target="_blank" {% endif %}>
+          <a href="{{ app.url }}" {% if app.external %} target="_blank" rel="noopener" {% endif %}>
             <figure class="app-icon">
               <img src="{{app.image}}" alt=""/>
             </figure>
@@ -53,26 +53,26 @@
     <br/>
     <span>Read the story behind it on
     </span>
-    <a href="https://medium.com/@kristianhjelle/let-there-be-daylight-2fc3a8448ea#.79xp7vhfu" target="_blank">Medium.</a>
+    <a href="https://medium.com/@kristianhjelle/let-there-be-daylight-2fc3a8448ea#.79xp7vhfu" target="_blank" rel="noopener">Medium.</a>
   </p>
 
   <footer class="landing__footer">
     <span>Shoutout to
     </span>
-    <a href="http://www.suncalc.org/" target="_blank">SunCalc</a>
+    <a href="http://www.suncalc.org/" target="_blank" rel="noopener">SunCalc</a>
     <span>
       for the API and
     </span>
-    <a href="https://www.grillitype.com/" target="_blank">Grilli Type</a>
+    <a href="https://www.grillitype.com/" target="_blank" rel="noopener">Grilli Type</a>
     <span>
       for the nice letters.
     </span>
     <span>Daylight is open sourced for
     </span>
-    <a href="https://github.com/bakkenbaeck/daylight-android" target="_blank">Android</a>
+    <a href="https://github.com/bakkenbaeck/daylight-android" target="_blank" rel="noopener">Android</a>
     <span>
       and</span>
-    <a href="https://github.com/bakkenbaeck/daylight-ios" target="_blank">iOS</a>
+    <a href="https://github.com/bakkenbaeck/daylight-ios" target="_blank" rel="noopener">iOS</a>
     <span>
       (web coming soon).</span>
   </footer>
