@@ -9,10 +9,11 @@
     "start": "ELEVENTY_ENV=development npm-run-all --parallel start:*",
     "start:webpack": "webpack --watch ",
     "start:eleventy": "eleventy --watch --serve",
-    "build": "ELEVENTY_ENV=production webpack && eleventy"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider ELEVENTY_ENV=production webpack && eleventy"
   },
   "dependencies": {
     "idb": "^2.0.0",
+    "postcss": "^8.2.12",
     "suncalc": "^1.7.0"
   },
   "devDependencies": {

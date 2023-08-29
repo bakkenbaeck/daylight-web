@@ -1,0 +1,10 @@
+#!/bin/bash
+set -o nounset
+set -o errexit
+set +o histexpand
+source bbdeployor.conf
+DOCKERHOST=$(ip route|awk '/default/ { print $3 }')
+sed "s/HOSTNAME/$HOSTNAME/g" bbdeployor/nginx.conf > /etc/nginx/sites-enabled/$HOSTNAME
+sed -i "s/SHORTNAME/$SHORTNAME/g" /etc/nginx/sites-enabled/$HOSTNAME
+sed -i "s/DOCKERHOST/$DOCKERHOST/g" /etc/nginx/sites-enabled/$HOSTNAME
+bbdeployor service-restart nginx || true
